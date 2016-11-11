@@ -1,7 +1,7 @@
-A socket.io example using TypeScript
-====================================
+A socket.io Chat Example Using TypeScript
+=========================================
 
-## Demo application
+## Demo Chat application
 You can open several browser windows to start the communication between different clients and socket.io server.
 Client URL: [https://goo.gl/tGBWJC](https://goo.gl/tGBWJC)
 
