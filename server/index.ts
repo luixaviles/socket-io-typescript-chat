@@ -44,7 +44,7 @@ class Server {
             console.log('Running server on port %s', this.port);
         });
 
-        this.io.on('connect', (socket) => {
+        this.io.on('connect', (socket: any) => {
             console.log('Connected client on port %s.', this.port);
             socket.on('message', (m: Message) => {
                 console.log('[server](message): %s', JSON.stringify(m));
