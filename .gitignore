@@ -1,4 +1,3 @@
-server/node_modules
-server/*.js
-server/model/*.js
+.idea/
+node_modules
 client/node_modules
