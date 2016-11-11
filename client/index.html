@@ -22,7 +22,7 @@
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-      var socket = io('http://localhost:8080');
+      var socket = io('https://rocky-harbor-71595.herokuapp.com:443');
       $('form').submit(function(){
         socket.emit('message', {
           from: 'Luis',
