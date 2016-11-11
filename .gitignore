@@ -1,3 +1,4 @@
 server/node_modules
-server/index.js
+server/*.js
+server/model/*.js
 client/node_modules
