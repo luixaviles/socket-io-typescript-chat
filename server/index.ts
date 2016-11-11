@@ -2,6 +2,8 @@ import * as express from "express";
 import * as http from "http";
 import * as socketIo from "socket.io";
 
+import { Message } from "./model";
+
 class Server {
     public static readonly PORT = 8080;
     public app: any;
@@ -44,9 +46,9 @@ class Server {
 
         this.io.on('connect', (socket) => {
             console.log('Connected client on port %s.', this.port);
-            socket.on('message', (message) => {
-                console.log('[server](message): %s', JSON.stringify(message));
-                this.io.emit('message', message);
+            socket.on('message', (m: Message) => {
+                console.log('[server](message): %s', JSON.stringify(m));
+                this.io.emit('message', m);
             });
 
             socket.on('disconnect', () => {
