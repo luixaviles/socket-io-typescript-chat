@@ -1,1 +1,3 @@
 server/node_modules
+server/index.js
+client/node_modules
