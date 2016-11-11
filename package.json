@@ -6,7 +6,7 @@
   "author": "Luis Aviles",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server/dist/index.js"
   },
   "dependencies": {
     "@types/express": "~4.0.33",

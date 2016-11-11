@@ -4,7 +4,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var _1 = require(".");
+var _1 = require("./");
 var ChatMessage = (function (_super) {
     __extends(ChatMessage, _super);
     function ChatMessage(from, content) {
