@@ -37,6 +37,10 @@ $ npm start
 
 The socket.io server will be running on port `8080`
 
+## Contribution
+
+This repository is open to receive Pull Requests to improve the code using `TypeScript`.
+
 ## License
 
 MIT
