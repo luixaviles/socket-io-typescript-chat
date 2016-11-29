@@ -1,3 +1,38 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-layout>
+
+    <md-sidenav #sidenav mode="side">
+        Rooms
+        <br>
+        <button md-button>Default Chat Room</button>
+    </md-sidenav>
+
+    <md-toolbar color="primary">
+        <button md-icon-button (click)="sidenav.toggle()">
+            <md-icon>menu</md-icon>
+        </button>
+        <span>Test</span>
+    </md-toolbar>
+
+    <md-card>
+        <md-list>
+            <md-list-item *ngFor="let message of messages">
+                <img md-list-avatar src="{{message.from.avatar}}">
+                <h3 md-line> {{message.from.name}} </h3>
+                <p md-line>
+                    <span> {{message.content}} </span>
+                </p>
+            </md-list-item>
+        </md-list>
+        <div class="row chat-input">
+            <md-icon>message</md-icon>
+            <md-input #chatExample placeholder="Type your message" style="width: 60%">
+                <md-hint align="end">{{chatExample.characterCount}}</md-hint>
+            </md-input>
+            <button md-icon-button>
+                <md-icon>send</md-icon>
+            </button>
+        </div>
+    </md-card>
+
+</md-sidenav-layout>
+
