@@ -1,7 +1,7 @@
 {
   "files": [
-    "server/src/*.ts",
-    "server/src/model/*.ts"
+    "src/*.ts",
+    "src/model/*.ts"
   ],
   "compilerOptions": {
     "noImplicitAny": true,
