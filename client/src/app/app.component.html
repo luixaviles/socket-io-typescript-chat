@@ -1,9 +1,8 @@
 <md-sidenav-layout>
 
     <md-sidenav #sidenav mode="side">
-        Rooms
-        <br>
-        <button md-button>Default Chat Room</button>
+        <h3>Configuration</h3>
+        <md-input [(ngModel)]="user.name" name="name" placeholder="Username"></md-input>
     </md-sidenav>
 
     <md-toolbar color="primary">
@@ -17,7 +16,7 @@
         <md-list>
             <md-list-item *ngFor="let message of messages">
                 <img md-list-avatar src="{{message.from.avatar}}">
-                <h3 md-line> {{message.from.name}} </h3>
+                <h2 md-line> <b>{{message.from.name}} </b> </h2>
                 <p md-line>
                     <span> {{message.content}} </span>
                 </p>
