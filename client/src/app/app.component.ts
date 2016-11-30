@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Message, User} from './';
+import {Message} from './shared/message.model';
+import {User} from './shared/user.model';
 
 let AVATAR_URL = 'http://avatar.3sd.me/80';
 
