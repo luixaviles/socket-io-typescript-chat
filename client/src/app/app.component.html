@@ -25,7 +25,7 @@
         <div class="chat-input">
             <md-icon>message</md-icon>
             <md-input #inputMessage placeholder="Type your message"
-                      [(ngModel)]="messageString"
+                      [(ngModel)]="messageContent"
                       maxlength="140"
                       style="width: 60%">
                 <md-hint align="end">{{inputMessage.characterCount}}/140</md-hint>
