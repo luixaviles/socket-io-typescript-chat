@@ -12,35 +12,35 @@ let AVATAR_URL = 'http://avatar.3sd.me/80';
     providers: [SocketService]
 })
 export class AppComponent implements OnInit {
-    user: User = new User('random-user', AVATAR_URL);
-    messages: Message[] = [
-        new Message(this.user, 'Hi there'),
-        new Message(new User('juan', AVATAR_URL), 'How are you'),
-    ];
-    messageContent: string;
-    ioConnection: any;
+    private user: User;
+    private messages: Message[];
+    private messageContent: string;
+    private ioConnection: any;
 
-    constructor(private socketService: SocketService) {
-
-    }
+    constructor(private socketService: SocketService) {}
 
     ngOnInit(): void {
         this.initModel();
         this.initIoConnection();
     }
 
-    initModel(): void {
-        this.messageContent = '';
+    private initModel(): void {
+        this.user = new User(this.getRandomUsername(), AVATAR_URL);
+        this.messages = [];
     }
 
-    initIoConnection(): void {
+    private initIoConnection(): void {
         this.ioConnection = this.socketService.get().subscribe((message: Message) => {
             this.messages.push(message);
         });
     }
 
+    private getRandomUsername(): string {
+        return 'User-' + (Math.floor(Math.random() * (10000 - 0)) + 1);
+    }
+
     sendMessage(): void {
         this.socketService.send(new Message(this.user, this.messageContent));
-        this.initModel();
+        this.messageContent = null;
     }
 }
