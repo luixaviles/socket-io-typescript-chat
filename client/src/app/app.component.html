@@ -24,10 +24,13 @@
         </md-list>
         <div class="row chat-input">
             <md-icon>message</md-icon>
-            <md-input #chatExample placeholder="Type your message" style="width: 60%">
-                <md-hint align="end">{{chatExample.characterCount}}</md-hint>
+            <md-input #inputMessage placeholder="Type your message"
+                      [(ngModel)]="messageString"
+                      maxlength="140"
+                      style="width: 60%">
+                <md-hint align="end">{{inputMessage.characterCount}}/140</md-hint>
             </md-input>
-            <button md-icon-button>
+            <button md-icon-button (click)="sendMessage()">
                 <md-icon>send</md-icon>
             </button>
         </div>
