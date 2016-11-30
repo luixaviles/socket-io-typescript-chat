@@ -3,7 +3,7 @@
 }
 
 .chat-container {
-    min-height: 500px;
-    max-height: 500px;
+    min-height: 350px;
+    max-height: 350px;
     overflow-y: auto;
 }
