@@ -1,8 +1,10 @@
+import {User} from './user.model';
+
 export class Message {
-    from: string;
+    from: User;
     content: string;
 
-    constructor(from: string, content: string) {
+    constructor(from: User, content: string) {
         this.from = from;
         this.content = content;
     }
