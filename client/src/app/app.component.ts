@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
 
     initIoConnection(): void {
         this.ioConnection = this.socketService.get().subscribe((message: Message) => {
-            this.messages.push(message)
+            this.messages.push(message);
         });
     }
 
