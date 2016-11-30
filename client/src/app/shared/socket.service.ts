@@ -19,7 +19,7 @@ export class SocketService {
     }
 
     public send(message: Message): void {
-        this.socket.emit('message', message)
+        this.socket.emit('message', message);
     }
 
     public get() {
