@@ -1,0 +1,300 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Creating an Angular 2 Application from scratch</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+    <!--<link rel="stylesheet" href="css/theme/white.css">-->
+    <!--<link rel="stylesheet" href="css/theme/beige.css">-->
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!--<link rel="stylesheet" href="lib/styles/idea.css">-->
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3>TypeScript on the Web:</h3>
+            <h2>Real Time Applications with Node.js and Angular 2</h2>
+            <p>
+                <small>CONASOL 2016</small>
+            </p>
+            <p>
+                <small>
+                    Luis Aviles / <a href="http://twitter.com/luixaviles">@luixaviles</a>
+                </small>
+            </p>
+        </section>
+
+        <section>
+            <h2>Agenda</h2>
+            <p>Node.js</p>
+            <p>WebSockets & Socket.io</p>
+            <p>TypeScript</p>
+            <p>Angular 2</p>
+            <p>Live Demo</p>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+            <h2>Node.js</h2>
+        </section>
+
+        <section>
+            <h2>Node.js</h2>
+            <p>Open Source platform for building applications, using JavaScript</p>
+            <p>An application optimized for performing high speed input/output operations</p>
+        </section>
+
+        <section>
+            <h2>Node.js</h2>
+            <p>A web server</p>
+            <p>An API server</p>
+        </section>
+
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+            <p>
+                NPM
+            </p>
+            <p>
+                The Node Package Manager
+            </p>
+        </section>
+
+        <section>
+            <h2>NPM</h2>
+            <p>A tool that assist with the searching, packaging, publishing and updating of node modules</p>
+            <pre>
+                <code class="bash" data-trim contenteditable>
+npm install [module] --save
+                </code>
+            </pre>
+
+        </section>
+
+        <section>
+            <h2>NPM</h2>
+            <p>
+                <img height="400" data-src="assets/npm-packages.png">
+            </p>
+
+        </section>
+
+        <section>
+            <h2>NPM Repository</h2>
+            <p><a href="https://www.npmjs.com">npmjs.com</a> Contains a massive repository of node packages</p>
+            <p>Over 350000 node packages exist!</p>
+        </section>
+
+        <section>
+            <h2>NPM modules</h2>
+            <p>
+                <img height="400" data-src="assets/node-modules.png">
+            </p>
+            <p>
+                <small>
+                    Source: <a href="http://www.modulecounts.com">http://www.modulecounts.com</a>
+                </small>
+            </p>
+
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+            <h2>WebSockets</h2>
+        </section>
+
+        <section>
+            <h2>WebSockets - What?</h2>
+            <p>A persistent connection between the client and the server</p>
+            <p>Both parties can start sending data at any time</p>
+        </section>
+
+        <section>
+            <h2>WebSockets - Why?</h2>
+            <p>Bi-directional communication</p>
+            <p>Great performance</p>
+        </section>
+
+
+        <section>
+            <h2>Polling vs WebSockets</h2>
+            <p>
+                <img height="450" data-src="assets/polling-vs-websockets.png">
+            </p>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+            <h2>Socket.io</h2>
+        </section>
+
+        <section>
+            <h2>Socket.io - What?</h2>
+            <p>Real Time application framework</p>
+            <p>Wrapper around WebSockets</p>
+            <p>Send events between client and the server</p>
+        </section>
+
+        <section>
+            <p>
+               Socket.io API (Server)
+            </p>
+            <pre>
+                <code class="javascript" data-trim contenteditable>
+// Server
+io.on('connection', callback(socket))
+                </code>
+                <code class="javascript" data-trim contenteditable>
+// Socket
+socket.on('event', callback(data))
+socket.emit('event', data)
+socket.broadcast.emit('event', data)
+                </code>
+            </pre>
+        </section>
+
+        <section>
+            <p>
+               Socket.io API (Client)
+            </p>
+            <pre>
+                <code class="javascript" data-trim contenteditable>
+// Socket
+socket.on('event', callback(data))
+socket.emit('event', data)
+                </code>
+            </pre>
+        </section>
+
+        <section>
+            <h2>Socket.io - API</h2>
+            <p>Works with JavaScript, Android, iOS clients</p>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+            <h2>TypeScript</h2>
+        </section>
+
+        <section>
+            <h2>TypeScript</h2>
+            <p>Free and Open Source programming language</p>
+            <p>Developed and Maintained by Microsoft</p>
+            <p>Compiles to plain JavaScript</p>
+            <p>Any browser. Any host. Any OS.</p>
+        </section>
+
+        <section>
+            <p>
+                <img height="350" data-src="assets/microsoft-loves-open-source.jpg">
+            </p>
+        </section>
+
+        <section>
+            <p>
+                <img height="350" data-src="assets/microsoft-loves-linux.jpg">
+            </p>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+            <h2>Angular 2</h2>
+            <p>
+                <img height="300" data-src="assets/angular.png">
+            </p>
+        </section>
+
+        <section>
+            <h2>Angular 2</h2>
+            <p>Written in TypeScript</p>
+            <p>Is not an upgrade from version 1.x</p>
+        </section>
+
+        <section>
+            <h2>Angular 2</h2>
+            <p>Component based Programming</p>
+            <p>Semantic Versioning</p>
+            <pre>
+						<code class="bash" data-trim contenteditable>
+							MAJOR.MINOR.PATCH
+						</code>
+                		<code class="bash" data-trim contenteditable>
+                            2.2.4 -> Current Version
+						</code>
+            </pre>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+            <h3>Live Demo</h3>
+            <p>
+                <blockquote class="twitter-tweet tw-align-center" data-lang="en"><p lang="en" dir="ltr">socket-io-typescript-chat: A Socket.io Example using TypeScript - <a href="https://t.co/oZFj5eyOuX">https://t.co/oZFj5eyOuX</a></p>&mdash; JavaScript Daily (@JavaScriptDaily) <a href="https://twitter.com/JavaScriptDaily/status/800852293037985792">November 22, 2016</a></blockquote>
+            </p>
+            <small>
+                <a style="color:white" href="https://github.com/luixaviles/socket-io-typescript-chat">https://github.com/luixaviles/socket-io-typescript-chat</a>
+            </small>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+            <h2>Questions?</h2>
+            <img width="270" data-src="assets/question-mark.png" style="background:none; border:none; box-shadow:#eee8d5;">
+        </section>
+
+        <section>
+            <h2>Thank You!</h2>
+            <div id="left">
+                <a href="https://twitter.com/luixaviles">
+                    <img width="270" data-src="assets/twitter.png" style="background:none; border:none; box-shadow:none;">
+                </a>
+                <div class="twitter-username">
+                    luixaviles
+                </div>
+            </div>
+
+            <div id="right">
+                <a href="https://github.com/luixaviles">
+                    <img width="185" data-src="assets/github-3.png" style="background:none; border:none; box-shadow:none;">
+                </a>
+                <div class="github-username">
+                    luixaviles
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>

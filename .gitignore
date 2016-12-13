@@ -1,21 +1,14 @@
 .idea/
-
-## server
-/server/node_modules
-/server/dist
-/server/npm-debug.log
-
-## client
-# compiled output
-/client/dist
-/client/tmp
-
-# dependencies
-/client/node_modules
-
-# misc
-/client/npm-debug.log
-
-# e2e
-/client/e2e/*.js
-/client/e2e/*.map
+*.iml
+*.iws
+*.eml
+out/
+.DS_Store
+.svn
+log/*.log
+test/
+tmp/**
+node_modules/
+.sass-cache
+css/reveal.min.css
+js/reveal.min.js
