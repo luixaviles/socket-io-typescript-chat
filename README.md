@@ -11,6 +11,11 @@ Client application was written using Angular 2 + [Material Components](https://m
 You can open several browser windows to start the communication between different clients and socket.io server.
 Try the [Live Demo Client](https://goo.gl/BpGvpD)
 
+# Support this project
+- Star GitHub repository :star:
+- Create pull requests, submit bugs or suggest new features
+- Follow updates on [Twitter](https://twitter.com/luixaviles)
+
 # Running Server and Client locally
 ## Prerequisites
 
