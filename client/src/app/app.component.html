@@ -1,8 +1,10 @@
-<md-sidenav-layout>
+<md-sidenav-container>
 
     <md-sidenav #sidenav mode="side">
         <h3>Configuration</h3>
-        <md-input [(ngModel)]="user.name" name="name" placeholder="Username"></md-input>
+        <md-input-container>
+          <input mdInput [(ngModel)]="user.name" name="name" placeholder="Username">
+        </md-input-container>
     </md-sidenav>
 
     <md-toolbar color="primary">
@@ -24,17 +26,18 @@
         </md-list>
         <div class="chat-input">
             <md-icon>message</md-icon>
-            <md-input #inputMessage placeholder="Type your message"
+            <md-input-container>
+                 <input mdInput #inputMessage placeholder="Type your message"
                       [(ngModel)]="messageContent"
                       maxlength="140"
                       style="width: 60%">
                 <md-hint align="end">{{inputMessage.characterCount}}/140</md-hint>
-            </md-input>
+            </md-input-container>
             <button md-icon-button (click)="sendMessage()">
                 <md-icon>send</md-icon>
             </button>
         </div>
     </md-card>
 
-</md-sidenav-layout>
+</md-sidenav-container>
 
