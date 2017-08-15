@@ -1,0 +1,10 @@
+.chat-input {
+     padding-top: 20px; 
+    width: 80%
+}
+
+.chat-container {
+     min-height: 350px;
+    max-height: 350px; 
+    overflow-y: auto;
+}

@@ -1,0 +1,20 @@
+ <md-card>
+  <md-list class="chat-container">
+    <md-list-item *ngFor="let message of messages">
+      <img md-list-avatar src="{{message.from.avatar}}">
+      <h2 md-line> <b>{{message.from.name}} </b> </h2>
+      <p md-line>
+        <span> {{message.content}} </span>
+      </p>
+    </md-list-item>
+  </md-list>
+  <div>
+    <md-icon>message</md-icon>
+    <md-input-container class="chat-input">
+      <input mdInput #inputMessage placeholder="Type your message" 
+             [(ngModel)]="messageContent" maxlength="140"
+             (keyup.enter)="sendMessage(messageContent)">
+      <md-hint align="end">{{inputMessage.value.length}}/140</md-hint>
+    </md-input-container>
+  </div>
+</md-card>

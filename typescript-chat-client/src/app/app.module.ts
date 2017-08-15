@@ -1,8 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
+
+import { MdIconModule,
+         MdInputModule,
+         MdButtonModule,
+         MdSidenavModule,
+         MdToolbarModule 
+        } from "@angular/material";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ChatModule } from './chat/chat.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +19,14 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    MdButtonModule,
+    MdIconModule,
+    MdInputModule,
+    MdSidenavModule,
+    MdToolbarModule,
+    ChatModule
   ],
   providers: [],
   bootstrap: [AppComponent]

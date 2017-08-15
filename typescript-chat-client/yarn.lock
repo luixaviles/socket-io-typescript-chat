@@ -2,9 +2,15 @@
 # yarn lockfile v1
 
 
-"@angular/animations@^4.0.0":
+"@angular/animations@^4.3.4":
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-4.3.4.tgz#02c726b3b70ae3d2e155704c8c60e9baf01547ef"
+  dependencies:
+    tslib "^1.7.1"
+
+"@angular/cdk@^2.0.0-beta.8":
+  version "2.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-2.0.0-beta.8.tgz#71961c851dfbeb19e085e898bf5e4461408f8b57"
   dependencies:
     tslib "^1.7.1"
 
@@ -115,6 +121,12 @@
 "@angular/language-service@^4.0.0":
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-4.3.4.tgz#3a44a227a2256941eb328057e3c1372868a8516f"
+
+"@angular/material@^2.0.0-beta.8":
+  version "2.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-2.0.0-beta.8.tgz#a92852abc9261aea26c2401f576645470be2cf38"
+  dependencies:
+    tslib "^1.7.1"
 
 "@angular/platform-browser-dynamic@^4.0.0":
   version "4.3.4"
@@ -1932,6 +1944,10 @@ globule@^1.0.0:
 graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
+
+hammerjs@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
 
 handle-thing@^1.2.5:
   version "1.2.5"
