@@ -5,11 +5,11 @@ import * as socketIo from "socket.io";
 import { Message } from "./model";
 
 class Server {
-    public static readonly PORT = 8080;
+    public static readonly PORT:number = 8080;
     public app: any;
     private server: any;
     private io: any;
-    private port: number;
+    private port: string | number;
 
     public static bootstrap(): Server {
         return new Server();
@@ -59,4 +59,4 @@ class Server {
 }
 
 let server = Server.bootstrap();
-export = server.app;
+export default server.app;

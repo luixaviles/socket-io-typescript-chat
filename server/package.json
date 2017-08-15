@@ -9,14 +9,14 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "@types/express": "~4.0.33",
-    "@types/socket.io": "^1.4.27",
+    "@types/express": "~4.0.36",
+    "@types/socket.io": "~1.4.29",
     "express": "~4.10.0",
-    "socket.io": "~1.5.1"
+    "socket.io": "~2.0.3"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-typescript": "^3.1.2",
-    "typescript": "^2.0.9"
+    "gulp": "~3.9.1",
+    "gulp-typescript": "~3.2.1",
+    "typescript": "~2.4.2"
   }
 }
