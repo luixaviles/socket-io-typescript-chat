@@ -1,4 +1,7 @@
- <md-card>
+<button md-fab (click)="openUserPopup()">
+  <md-icon>person</md-icon>
+</button>
+<md-card>
   <md-list class="chat-container">
     <md-list-item *ngFor="let message of messages">
       <img md-list-avatar src="{{message.from.avatar}}">

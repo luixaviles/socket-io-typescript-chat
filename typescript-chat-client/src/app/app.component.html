@@ -1,10 +1,18 @@
 <md-sidenav-container>
+  <md-sidenav #sidenav mode="side">
+    <h3>Configuration</h3>
+    <md-input-container>
+      <input mdInput name="name" placeholder="Username">
+    </md-input-container>
+  </md-sidenav>
+  
   <md-toolbar color="primary">
-    <button md-icon-button>
+    <button md-icon-button (click)="sidenav.toggle()">
       <md-icon>menu</md-icon>
     </button>
     <span>Angular Chat</span>
   </md-toolbar>
-</md-sidenav-container>
 
 <router-outlet></router-outlet>
+
+</md-sidenav-container>
