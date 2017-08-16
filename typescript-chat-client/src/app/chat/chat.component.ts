@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit {
   ioConnection: any;
   dialogRef: MdDialogRef<DialogEditUserComponent> | null;
 
-  constructor(private socketService: SocketService, 
+  constructor(private socketService: SocketService,
               public dialog: MdDialog) { }
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class ChatComponent implements OnInit {
     this.user = {
       name: this.getRandomUsername(),
       avatar: AVATAR_URL
-    }; 
+    };
     this.messages = [];
   }
 
@@ -48,9 +48,14 @@ export class ChatComponent implements OnInit {
   }
 
   public openUserPopup(): void {
-    this.dialogRef = this.dialog.open(DialogEditUserComponent);
+    this.dialogRef = this.dialog.open(DialogEditUserComponent, {
+      data: this.user.name
+    });
     this.dialogRef.afterClosed().subscribe(result => {
-
+      if(!result) {
+        return;
+      }
+      this.user.name = result;
     });
   }
 

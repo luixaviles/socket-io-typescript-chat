@@ -6,7 +6,8 @@ import { MdIconModule,
          MdInputModule,
          MdButtonModule,
          MdSidenavModule,
-         MdToolbarModule 
+         MdToolbarModule,
+         MdListModule,
         } from "@angular/material";
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +27,7 @@ import { ChatModule } from './chat/chat.module';
     MdInputModule,
     MdSidenavModule,
     MdToolbarModule,
+    MdListModule,
     ChatModule
   ],
   providers: [],

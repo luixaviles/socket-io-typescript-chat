@@ -1,11 +1,21 @@
 <md-sidenav-container>
-  <md-sidenav #sidenav mode="side">
-    <h3>Configuration</h3>
-    <md-input-container>
-      <input mdInput name="name" placeholder="Username">
-    </md-input-container>
+  <md-sidenav #sidenav>
+    <md-nav-list>
+      <a md-list-item href="https://luixaviles.com">
+        <md-icon>person</md-icon>
+        <p>Author</p>
+      </a>
+      <a md-list-item href="https://github.com/luixaviles/socket-io-typescript-chat">
+        <md-icon>code</md-icon>
+        <p>Source Code</p>
+      </a>
+      <a md-list-item href="https://luixaviles.com">
+        <md-icon>info</md-icon>
+        <p>See blog post</p>
+      </a>
+    </md-nav-list>
   </md-sidenav>
-  
+
   <md-toolbar color="primary">
     <button md-icon-button (click)="sidenav.toggle()">
       <md-icon>menu</md-icon>

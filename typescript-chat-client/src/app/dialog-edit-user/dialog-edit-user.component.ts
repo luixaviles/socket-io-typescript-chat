@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'tcc-dialog-edit-user',
@@ -7,10 +7,14 @@ import { MdDialogRef } from '@angular/material';
   styleUrls: ['./dialog-edit-user.component.css']
 })
 export class DialogEditUserComponent implements OnInit {
-
-  constructor(public dialogRef: MdDialogRef<DialogEditUserComponent>) { }
+  constructor(public dialogRef: MdDialogRef<DialogEditUserComponent>,
+              @Inject(MD_DIALOG_DATA) public username: string) { }
 
   ngOnInit() {
+  }
+
+  public onSave(): void {
+    this.dialogRef.close(this.username);
   }
 
 }
