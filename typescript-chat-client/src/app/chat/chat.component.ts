@@ -20,13 +20,24 @@ export class ChatComponent implements OnInit {
   messageContent: string;
   ioConnection: any;
   dialogRef: MdDialogRef<DialogEditUserComponent> | null;
+  defaultDialogUserParams: any = {
+    disableClose: true,
+    data: {
+      title: 'Wellcome',
+      typeDialog: 'new-user'
+    }
+  };
 
   constructor(private socketService: SocketService,
-              public dialog: MdDialog) { }
+    public dialog: MdDialog) { }
 
   ngOnInit(): void {
     this.initModel();
     this.initIoConnection();
+    // Using timeout due to https://github.com/angular/angular/issues/14748
+    setTimeout(() => {
+      this.openUserPopup(this.defaultDialogUserParams);
+    }, 0);
   }
 
   private initModel(): void {
@@ -47,12 +58,20 @@ export class ChatComponent implements OnInit {
     return 'User-' + (Math.floor(Math.random() * (10000 - 0)) + 1);
   }
 
-  public openUserPopup(): void {
-    this.dialogRef = this.dialog.open(DialogEditUserComponent, {
-      data: this.user.name
+  public onClickUserInfo() {
+    this.openUserPopup({
+      data: {
+        username: this.user.name,
+        title: 'Edit Details',
+        typeDialog: 'edit-user'
+      }
     });
+  }
+
+  private openUserPopup(params): void {
+    this.dialogRef = this.dialog.open(DialogEditUserComponent, params);
     this.dialogRef.afterClosed().subscribe(result => {
-      if(!result) {
+      if (!result) {
         return;
       }
       this.user.name = result;
