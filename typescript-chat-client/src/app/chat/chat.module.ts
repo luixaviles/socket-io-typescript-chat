@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MdButtonModule,
   MdCardModule,
@@ -24,7 +24,8 @@ import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.co
     MdDialogModule,
     MdIconModule,
     MdInputModule,
-    MdListModule
+    MdListModule,
+    ReactiveFormsModule
   ],
   declarations: [ChatComponent, DialogEditUserComponent],
   providers: [SocketService, MdDialog],

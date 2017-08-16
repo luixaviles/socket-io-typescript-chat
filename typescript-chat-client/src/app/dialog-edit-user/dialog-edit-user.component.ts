@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'tcc-dialog-edit-user',
@@ -12,6 +13,7 @@ export class DialogEditUserComponent implements OnInit {
     username: 'name',
     dialogType: 'edit-user'
   };
+  usernameFormControl = new FormControl('', [Validators.required]);
 
   constructor(public dialogRef: MdDialogRef<DialogEditUserComponent>,
     @Inject(MD_DIALOG_DATA) public params: any) {
