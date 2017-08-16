@@ -1,9 +1,11 @@
-<h2 md-dialog-title>{{params.title}}</h2> 
+<h2 md-dialog-title>{{params.title}}</h2>
 
 <md-dialog-content>
   <md-input-container>
-       <input mdInput name="username" placeholder="Username" [(ngModel)]="params.username" (keyup.enter)="onSave()"> 
-    </md-input-container>
+    <input mdInput name="username" placeholder="Username" [(ngModel)]="params.username" (keyup.enter)="onSave()" required>
+    <md-error>This field is required</md-error>
+    <md-hint>Please type your username</md-hint>
+  </md-input-container>
 </md-dialog-content>
 
 <md-dialog-actions *ngIf="params?.typeDialog === 'new-user'" [attr.align]="'end'">

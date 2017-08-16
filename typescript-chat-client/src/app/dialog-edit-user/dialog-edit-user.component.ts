@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 @Component({
@@ -7,17 +7,15 @@ import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./dialog-edit-user.component.css']
 })
 export class DialogEditUserComponent implements OnInit {
-  paramss:any = {
+  paramss: any = {
     title: 'title',
     username: 'name',
     dialogType: 'edit-user'
   };
 
   constructor(public dialogRef: MdDialogRef<DialogEditUserComponent>,
-              private cdRef: ChangeDetectorRef,
-              @Inject(MD_DIALOG_DATA) public params: any) { 
-                //  this.cdRef.detectChanges();
-              }
+    @Inject(MD_DIALOG_DATA) public params: any) {
+  }
 
   ngOnInit() {
   }
