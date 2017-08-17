@@ -1,4 +1,4 @@
-<md-sidenav-container>
+<md-sidenav-container fullscreen>
   <md-sidenav #sidenav>
     <md-nav-list>
       <a md-list-item href="https://luixaviles.com">
@@ -16,13 +16,17 @@
     </md-nav-list>
   </md-sidenav>
 
-  <md-toolbar color="primary">
-    <button md-icon-button (click)="sidenav.toggle()">
+  <div>
+    <md-toolbar color="primary">
+      <button md-icon-button (click)="sidenav.toggle()">
       <md-icon>menu</md-icon>
     </button>
-    <span>Angular Chat</span>
-  </md-toolbar>
+      <span>Angular Chat</span>
+    </md-toolbar>
 
-<router-outlet></router-outlet>
+    <div class="app-content">
+      <router-outlet></router-outlet>
+    </div>
 
+  </div>
 </md-sidenav-container>

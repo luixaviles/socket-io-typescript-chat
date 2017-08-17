@@ -1,17 +1,18 @@
-.chat-input {
-    padding-top: 20px;
-    width: 80%;
-}
-
-.chat-container {
-    min-height: 350px;
-    max-height: 350px;
-    overflow-y: auto;
-}
 
 [md-fab] {
     position: absolute;
     right: 2%;
     top: 35px;
     z-index: 1;
+}
+
+.chat-container {
+    position: absolute;
+    width: 100%; 
+    height: 100%;
+}
+
+.chat-input {
+    padding-top: 20px;
+    width: 80%; 
 }
