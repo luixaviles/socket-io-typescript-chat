@@ -16,3 +16,12 @@
     padding-top: 20px;
     width: 80%; 
 }
+
+.chat-list {
+    height: 70%;
+    overflow: auto;
+}
+
+.main-card {
+    height: 100%;  
+}
