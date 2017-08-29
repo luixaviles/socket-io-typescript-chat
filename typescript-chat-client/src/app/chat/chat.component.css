@@ -18,10 +18,21 @@
 }
 
 .chat-list {
-    height: 70%;
     overflow: auto;
+    position: fixed;
+    top: 90px;
+    left: 25px;
+    right: 25px;
+    bottom: 120px;
 }
 
 .main-card {
     height: 100%;  
+}
+
+.chat-footer-container {
+    position:fixed;
+    bottom:25px;
+    left:25px;
+    right:25px;
 }
