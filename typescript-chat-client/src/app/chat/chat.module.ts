@@ -28,7 +28,7 @@ import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.co
     ReactiveFormsModule
   ],
   declarations: [ChatComponent, DialogEditUserComponent],
-  providers: [SocketService, MdDialog],
+  providers: [MdDialog, SocketService],
   entryComponents: [DialogEditUserComponent]
 })
 export class ChatModule { }

@@ -1,7 +1,8 @@
 import {User} from './user.model';
+import {Action} from './action';
 
-export class Message {
-    constructor(public from: User, public content: string) {
-
-    }
+export interface Message {
+    from: User;
+    content: string;
+    action?: Action;
 }

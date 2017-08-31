@@ -7,7 +7,7 @@ import { SocketService } from '../shared/socket.service';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
 
-let AVATAR_URL = 'http://avatar.3sd.me/80';
+let AVATAR_URL = 'https://api.adorable.io/avatars/285';
 
 @Component({
   selector: 'tcc-chat',
@@ -33,7 +33,6 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.initModel();
-    this.initIoConnection();
     // Using timeout due to https://github.com/angular/angular/issues/14748
     setTimeout(() => {
       this.openUserPopup(this.defaultDialogUserParams);
@@ -42,20 +41,34 @@ export class ChatComponent implements OnInit {
 
   private initModel(): void {
     this.user = {
-      name: this.getRandomUsername(),
-      avatar: AVATAR_URL
+      id: this.getRandomId()
     };
+
     this.messages = [];
   }
 
   private initIoConnection(): void {
-    this.ioConnection = this.socketService.get().subscribe((message: Message) => {
-      this.messages.push(message);
-    });
+    this.socketService.initSocket();
+
+    this.ioConnection = this.socketService.onMessage()
+      .subscribe((message: Message) => {
+        this.messages.push(message);
+        console.log(this.messages);
+      });
+
+    this.socketService.onConnect()
+      .subscribe(() => {
+        console.log('onConnect');
+      });
+
+    this.socketService.onDisconnect()
+      .subscribe(() => {
+        console.log('onDisconnect');
+      });
   }
 
-  private getRandomUsername(): string {
-    return 'User-' + (Math.floor(Math.random() * (10000 - 0)) + 1);
+  private getRandomId(): number {
+    return Math.floor(Math.random() * (1000000)) + 1;
   }
 
   public onClickUserInfo() {
@@ -74,12 +87,22 @@ export class ChatComponent implements OnInit {
       if (!result) {
         return;
       }
+
       this.user.name = result;
+      this.user.avatar = `${AVATAR_URL}/${this.user.id}.png`;
+      this.initIoConnection();
     });
   }
 
   public sendMessage(message): void {
-    this.socketService.send(new Message(this.user, message));
+    if (!message) {
+      return;
+    }
+
+    this.socketService.send({
+      from: this.user,
+      content: message
+    });
     this.messageContent = null;
   }
 }

@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Message} from './message.model';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Message } from './message.model';
 
 import * as socketIo from 'socket.io-client';
 
@@ -10,11 +10,7 @@ let SERVER_URL = 'http://localhost:8080';
 export class SocketService {
     private socket;
 
-    constructor() {
-        this.initSocket();
-    }
-
-    private initSocket(): void {
+    public initSocket(): void {
         this.socket = socketIo(SERVER_URL);
     }
 
@@ -22,16 +18,23 @@ export class SocketService {
         this.socket.emit('message', message);
     }
 
-    public get() {
-        let observable = new Observable(observer => {
+    public onMessage(): Observable<any> {
+        return new Observable(observer => {
             this.socket.on('message', (data) => {
                 observer.next(data);
             });
-            return () => {
-                this.socket.disconnect();
-            };
         });
-        return observable;
     }
 
+    public onConnect(): Observable<any> {
+        return new Observable(observer => {
+            this.socket.on('connect', () => observer.next());
+        });
+    }
+    
+    public onDisconnect(): Observable<any> {
+        return new Observable(observer => {
+            this.socket.on('disconnect', () => observer.next());
+        });
+    }
 }
