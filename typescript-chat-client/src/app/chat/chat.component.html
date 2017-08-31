@@ -4,13 +4,16 @@
 <div class="chat-container">
   <md-card class="main-card">
     <md-list class="chat-list">
-      <md-list-item *ngFor="let message of messages" [dir]="message.from.id === user.id? 'rtl': 'ltr'">
-        <img md-list-avatar [src]="message.from.avatar">
-        <h4 md-line>
+      <md-list-item *ngFor="let message of messages" [dir]="(message.action === undefined && message.from.id === user.id)? 'rtl': 'ltr'">
+        <img md-list-avatar *ngIf="message.action === undefined" [src]="message.from.avatar">
+        <h4 md-line *ngIf="message.action === undefined">
           <b>{{message.from.name}}</b>
         </h4>
-        <p md-line>
+        <p md-line *ngIf="message.action === undefined">
           <span> {{message.content}} </span>
+        </p>
+        <p md-line *ngIf="message.action === action.JOINED && message.from.id !== user.id">
+          <span> <b>{{message.from.name}}</b> joined to the conversation </span>
         </p>
       </md-list-item>
     </md-list>

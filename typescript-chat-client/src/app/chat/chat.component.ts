@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 
+import { Action } from '../shared/action';
 import { Message } from '../shared/message.model';
 import { User } from '../shared/user.model';
 import { SocketService } from '../shared/socket.service';
@@ -15,6 +16,7 @@ let AVATAR_URL = 'https://api.adorable.io/avatars/285';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
+  action = Action;
   user: User;
   messages: Message[];
   messageContent: string;
@@ -91,10 +93,11 @@ export class ChatComponent implements OnInit {
       this.user.name = result;
       this.user.avatar = `${AVATAR_URL}/${this.user.id}.png`;
       this.initIoConnection();
+      this.sendNotification(this.user, Action.JOINED);
     });
   }
 
-  public sendMessage(message): void {
+  public sendMessage(message: string): void {
     if (!message) {
       return;
     }
@@ -104,5 +107,12 @@ export class ChatComponent implements OnInit {
       content: message
     });
     this.messageContent = null;
+  }
+
+  public sendNotification(user: User, action: Action): void {
+    this.socketService.send({
+      from: this.user,
+      action: action
+    });
   }
 }
