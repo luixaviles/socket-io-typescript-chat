@@ -94,7 +94,9 @@ export class ChatComponent implements OnInit {
       //TODO Use enums
       if (params.dialogType === 'new-user') {
         this.initIoConnection();
-        this.sendNotification(this.user, Action.JOINED);
+        this.sendNotification(params, Action.JOINED);
+      } else if(params.dialogType == 'edit-user') {
+        this.sendNotification(params, Action.RENAME);
       }
     });
   }
@@ -111,10 +113,25 @@ export class ChatComponent implements OnInit {
     this.messageContent = null;
   }
 
-  public sendNotification(user: User, action: Action): void {
-    this.socketService.send({
-      from: this.user,
-      action: action
-    });
+  public sendNotification(params: any, action: Action): void {
+    let message: Message;
+
+    if (action === Action.JOINED) {
+      message = {
+        from: this.user,
+        action: action
+      }
+    }
+    else if (action === Action.RENAME) {
+      message = {
+        action: action,
+        content: {
+          username: this.user.name,
+          previousUsername: params.previousUsername
+        }
+      };
+    }
+
+    this.socketService.send(message);
   }
 }

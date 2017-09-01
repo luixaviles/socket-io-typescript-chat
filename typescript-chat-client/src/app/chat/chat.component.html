@@ -12,8 +12,11 @@
         <p md-line *ngIf="message.action === undefined">
           <span> {{message.content}} </span>
         </p>
-        <p md-line *ngIf="message.action === action.JOINED">
-          <span> <b>{{message.from.name}}</b> joined to the conversation </span>
+        <p md-line *ngIf="message.action === action.JOINED" class="chat-notification">
+          <span> <b>{{message.from.name}}</b> joined to the conversation. </span>
+        </p>
+        <p md-line *ngIf="message.action === action.RENAME" class="chat-notification">
+          <span> <b>{{message.content.previousUsername}}</b> now is <b>{{message.content.username}}</b> </span>
         </p>
       </md-list-item>
     </md-list>

@@ -9,9 +9,11 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class DialogUserComponent implements OnInit {
   usernameFormControl = new FormControl('', [Validators.required]);
+  previousUsername: string;
 
   constructor(public dialogRef: MdDialogRef<DialogUserComponent>,
-    @Inject(MD_DIALOG_DATA) public params: any) {
+              @Inject(MD_DIALOG_DATA) public params: any) {
+        this.previousUsername = params.username? params.username: undefined;
   }
 
   ngOnInit() {
@@ -20,7 +22,8 @@ export class DialogUserComponent implements OnInit {
   public onSave(): void {
     this.dialogRef.close({
       username: this.params.username,
-      dialogType: this.params.typeDialog
+      dialogType: this.params.typeDialog,
+      previousUsername: this.previousUsername
     });
   }
 }

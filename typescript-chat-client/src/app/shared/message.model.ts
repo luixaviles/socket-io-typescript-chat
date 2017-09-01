@@ -3,6 +3,6 @@ import {Action} from './action';
 
 export interface Message {
     from?: User;
-    content?: string | any;
+    content?: any;
     action?: Action;
 }
