@@ -8,7 +8,7 @@ import { SocketService } from '../shared/socket.service';
 import { DialogUserComponent } from '../dialog-user/dialog-user.component';
 
 
-let AVATAR_URL = 'https://api.adorable.io/avatars/285';
+const AVATAR_URL = 'https://api.adorable.io/avatars/285';
 
 @Component({
   selector: 'tcc-chat',
@@ -85,18 +85,17 @@ export class ChatComponent implements OnInit {
 
   private openUserPopup(params): void {
     this.dialogRef = this.dialog.open(DialogUserComponent, params);
-    this.dialogRef.afterClosed().subscribe(params => {
-      if (!params) {
+    this.dialogRef.afterClosed().subscribe(paramsDialog => {
+      if (!paramsDialog) {
         return;
       }
 
-      this.user.name = params.username;
-      //TODO Use enums
-      if (params.dialogType === 'new-user') {
+      this.user.name = paramsDialog.username;
+      if (paramsDialog.dialogType === 'new-user') {
         this.initIoConnection();
-        this.sendNotification(params, Action.JOINED);
-      } else if(params.dialogType == 'edit-user') {
-        this.sendNotification(params, Action.RENAME);
+        this.sendNotification(paramsDialog, Action.JOINED);
+      } else if (paramsDialog.dialogType === 'edit-user') {
+        this.sendNotification(paramsDialog, Action.RENAME);
       }
     });
   }
@@ -121,8 +120,7 @@ export class ChatComponent implements OnInit {
         from: this.user,
         action: action
       }
-    }
-    else if (action === Action.RENAME) {
+    } else if (action === Action.RENAME) {
       message = {
         action: action,
         content: {

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { MdIconModule,
@@ -8,7 +8,7 @@ import { MdIconModule,
          MdSidenavModule,
          MdToolbarModule,
          MdListModule,
-        } from "@angular/material";
+        } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

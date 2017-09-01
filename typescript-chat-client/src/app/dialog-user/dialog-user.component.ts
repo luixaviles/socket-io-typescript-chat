@@ -12,8 +12,8 @@ export class DialogUserComponent implements OnInit {
   previousUsername: string;
 
   constructor(public dialogRef: MdDialogRef<DialogUserComponent>,
-              @Inject(MD_DIALOG_DATA) public params: any) {
-        this.previousUsername = params.username? params.username: undefined;
+    @Inject(MD_DIALOG_DATA) public params: any) {
+    this.previousUsername = params.username ? params.username : undefined;
   }
 
   ngOnInit() {

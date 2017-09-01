@@ -4,7 +4,7 @@ import { Message } from './message.model';
 
 import * as socketIo from 'socket.io-client';
 
-let SERVER_URL = 'http://localhost:8080';
+const SERVER_URL = 'http://localhost:8080';
 
 @Injectable()
 export class SocketService {
@@ -31,7 +31,7 @@ export class SocketService {
             this.socket.on('connect', () => observer.next());
         });
     }
-    
+
     public onDisconnect(): Observable<any> {
         return new Observable(observer => {
             this.socket.on('disconnect', () => observer.next());

@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MdButtonModule,
   MdCardModule,
-  MdDialog, 
+  MdDialog,
   MdDialogModule,
   MdIconModule,
   MdInputModule,
