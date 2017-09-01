@@ -16,7 +16,7 @@
           <span> <b>{{message.from.name}}</b> joined to the conversation. </span>
         </p>
         <p md-line *ngIf="message.action === action.RENAME" class="chat-notification">
-          <span> <b>{{message.content.previousUsername}}</b> now is <b>{{message.content.username}}</b> </span>
+          <span> <b>{{message.content.previousUsername}}</b> is now <b>{{message.content.username}}</b> </span>
         </p>
       </md-list-item>
     </md-list>

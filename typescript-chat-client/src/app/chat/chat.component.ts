@@ -6,6 +6,7 @@ import { Message } from '../shared/message.model';
 import { User } from '../shared/user.model';
 import { SocketService } from '../shared/socket.service';
 import { DialogUserComponent } from '../dialog-user/dialog-user.component';
+import { DialogUserType } from '../dialog-user/dialog-user-type';
 
 
 const AVATAR_URL = 'https://api.adorable.io/avatars/285';
@@ -26,7 +27,7 @@ export class ChatComponent implements OnInit {
     disableClose: true,
     data: {
       title: 'Wellcome',
-      typeDialog: 'new-user'
+      dialogType: DialogUserType.NEW
     }
   };
 
@@ -55,7 +56,6 @@ export class ChatComponent implements OnInit {
     this.ioConnection = this.socketService.onMessage()
       .subscribe((message: Message) => {
         this.messages.push(message);
-        console.log(this.messages);
       });
 
     this.socketService.onConnect()
@@ -78,7 +78,7 @@ export class ChatComponent implements OnInit {
       data: {
         username: this.user.name,
         title: 'Edit Details',
-        typeDialog: 'edit-user'
+        dialogType: DialogUserType.EDIT
       }
     });
   }
@@ -91,10 +91,10 @@ export class ChatComponent implements OnInit {
       }
 
       this.user.name = paramsDialog.username;
-      if (paramsDialog.dialogType === 'new-user') {
+      if (paramsDialog.dialogType === DialogUserType.NEW) {
         this.initIoConnection();
         this.sendNotification(paramsDialog, Action.JOINED);
-      } else if (paramsDialog.dialogType === 'edit-user') {
+      } else if (paramsDialog.dialogType === DialogUserType.EDIT) {
         this.sendNotification(paramsDialog, Action.RENAME);
       }
     });

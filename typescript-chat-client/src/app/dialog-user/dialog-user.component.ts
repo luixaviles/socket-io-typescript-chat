@@ -22,7 +22,7 @@ export class DialogUserComponent implements OnInit {
   public onSave(): void {
     this.dialogRef.close({
       username: this.params.username,
-      dialogType: this.params.typeDialog,
+      dialogType: this.params.dialogType,
       previousUsername: this.previousUsername
     });
   }
