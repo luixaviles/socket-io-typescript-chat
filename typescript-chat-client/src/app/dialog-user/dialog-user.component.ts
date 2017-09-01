@@ -3,14 +3,14 @@ import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'tcc-dialog-edit-user',
-  templateUrl: './dialog-edit-user.component.html',
-  styleUrls: ['./dialog-edit-user.component.css']
+  selector: 'tcc-dialog-user',
+  templateUrl: './dialog-user.component.html',
+  styleUrls: ['./dialog-user.component.css']
 })
-export class DialogEditUserComponent implements OnInit {
+export class DialogUserComponent implements OnInit {
   usernameFormControl = new FormControl('', [Validators.required]);
 
-  constructor(public dialogRef: MdDialogRef<DialogEditUserComponent>,
+  constructor(public dialogRef: MdDialogRef<DialogUserComponent>,
     @Inject(MD_DIALOG_DATA) public params: any) {
   }
 

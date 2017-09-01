@@ -13,7 +13,7 @@ import {
 
 import { ChatComponent } from './chat.component';
 import { SocketService } from '../shared/socket.service';
-import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
+import { DialogUserComponent } from '../dialog-user/dialog-user.component';
 
 @NgModule({
   imports: [
@@ -27,8 +27,8 @@ import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.co
     MdListModule,
     ReactiveFormsModule
   ],
-  declarations: [ChatComponent, DialogEditUserComponent],
+  declarations: [ChatComponent, DialogUserComponent],
   providers: [MdDialog, SocketService],
-  entryComponents: [DialogEditUserComponent]
+  entryComponents: [DialogUserComponent]
 })
 export class ChatModule { }

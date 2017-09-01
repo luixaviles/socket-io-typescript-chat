@@ -5,7 +5,7 @@ import { Action } from '../shared/action';
 import { Message } from '../shared/message.model';
 import { User } from '../shared/user.model';
 import { SocketService } from '../shared/socket.service';
-import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
+import { DialogUserComponent } from '../dialog-user/dialog-user.component';
 
 
 let AVATAR_URL = 'https://api.adorable.io/avatars/285';
@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit {
   messages: Message[] = [];
   messageContent: string;
   ioConnection: any;
-  dialogRef: MdDialogRef<DialogEditUserComponent> | null;
+  dialogRef: MdDialogRef<DialogUserComponent> | null;
   defaultDialogUserParams: any = {
     disableClose: true,
     data: {
@@ -84,7 +84,7 @@ export class ChatComponent implements OnInit {
   }
 
   private openUserPopup(params): void {
-    this.dialogRef = this.dialog.open(DialogEditUserComponent, params);
+    this.dialogRef = this.dialog.open(DialogUserComponent, params);
     this.dialogRef.afterClosed().subscribe(params => {
       if (!params) {
         return;
