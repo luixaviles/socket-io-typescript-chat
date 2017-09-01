@@ -8,11 +8,6 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./dialog-edit-user.component.css']
 })
 export class DialogEditUserComponent implements OnInit {
-  paramss: any = {
-    title: 'title',
-    username: 'name',
-    dialogType: 'edit-user'
-  };
   usernameFormControl = new FormControl('', [Validators.required]);
 
   constructor(public dialogRef: MdDialogRef<DialogEditUserComponent>,
@@ -23,6 +18,9 @@ export class DialogEditUserComponent implements OnInit {
   }
 
   public onSave(): void {
-    this.dialogRef.close(this.params.username);
+    this.dialogRef.close({
+      username: this.params.username,
+      dialogType: this.params.typeDialog
+    });
   }
 }

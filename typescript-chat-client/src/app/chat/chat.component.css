@@ -26,6 +26,13 @@
     bottom: 120px;
 }
 
+.chat-list-item {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    background-color: #E8EAF6;
+}
+
 .main-card {
     height: 100%;  
 }

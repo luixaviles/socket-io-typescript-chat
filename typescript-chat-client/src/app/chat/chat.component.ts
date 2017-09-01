@@ -18,7 +18,7 @@ let AVATAR_URL = 'https://api.adorable.io/avatars/285';
 export class ChatComponent implements OnInit {
   action = Action;
   user: User;
-  messages: Message[];
+  messages: Message[] = [];
   messageContent: string;
   ioConnection: any;
   dialogRef: MdDialogRef<DialogEditUserComponent> | null;
@@ -42,11 +42,11 @@ export class ChatComponent implements OnInit {
   }
 
   private initModel(): void {
+    const randomId = this.getRandomId();
     this.user = {
-      id: this.getRandomId()
+      id: randomId,
+      avatar: `${AVATAR_URL}/${randomId}.png`
     };
-
-    this.messages = [];
   }
 
   private initIoConnection(): void {
@@ -85,15 +85,17 @@ export class ChatComponent implements OnInit {
 
   private openUserPopup(params): void {
     this.dialogRef = this.dialog.open(DialogEditUserComponent, params);
-    this.dialogRef.afterClosed().subscribe(result => {
-      if (!result) {
+    this.dialogRef.afterClosed().subscribe(params => {
+      if (!params) {
         return;
       }
 
-      this.user.name = result;
-      this.user.avatar = `${AVATAR_URL}/${this.user.id}.png`;
-      this.initIoConnection();
-      this.sendNotification(this.user, Action.JOINED);
+      this.user.name = params.username;
+      //TODO Use enums
+      if (params.dialogType === 'new-user') {
+        this.initIoConnection();
+        this.sendNotification(this.user, Action.JOINED);
+      }
     });
   }
 
