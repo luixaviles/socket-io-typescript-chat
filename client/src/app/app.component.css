@@ -1,12 +1,5 @@
-@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
-@import '~https://fonts.googleapis.com/icon?family=Roboto';
-
-.chat-input {
-    padding-top: 20px;
-}
-
-.chat-container {
-    min-height: 350px;
-    max-height: 350px;
-    overflow-y: auto;
-}
+ .app-content {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+} 

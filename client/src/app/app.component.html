@@ -1,43 +1,27 @@
-<md-sidenav-container>
+<md-sidenav-container fullscreen>
+  <md-sidenav #sidenav>
+    <md-nav-list>
+      <a md-list-item href="https://luixaviles.com">
+        <md-icon md-list-icon>person</md-icon>
+        <span md-line>Author</span>
+      </a>
+      <a md-list-item href="https://github.com/luixaviles/socket-io-typescript-chat">
+        <md-icon md-list-icon>code</md-icon>
+        <span md-line>Source Code</span>
+      </a>
+    </md-nav-list>
+  </md-sidenav>
 
-    <md-sidenav #sidenav mode="side">
-        <h3>Configuration</h3>
-        <md-input-container>
-          <input mdInput [(ngModel)]="user.name" name="name" placeholder="Username">
-        </md-input-container>
-    </md-sidenav>
-
+  <div>
     <md-toolbar color="primary">
-        <button md-icon-button (click)="sidenav.toggle()">
-            <md-icon>menu</md-icon>
-        </button>
-        <span>Angular Chat</span>
+      <button md-icon-button (click)="sidenav.toggle()">
+      <md-icon>menu</md-icon>
+    </button>
+      <span>Typescript Chat</span>
     </md-toolbar>
 
-    <md-card>
-        <md-list class="chat-container">
-            <md-list-item *ngFor="let message of messages">
-                <img md-list-avatar src="{{message.from.avatar}}">
-                <h2 md-line> <b>{{message.from.name}} </b> </h2>
-                <p md-line>
-                    <span> {{message.content}} </span>
-                </p>
-            </md-list-item>
-        </md-list>
-        <div class="chat-input">
-            <md-icon>message</md-icon>
-            <md-input-container>
-                 <input mdInput #inputMessage placeholder="Type your message"
-                      [(ngModel)]="messageContent"
-                      maxlength="140"
-                      style="width: 60%">
-                <md-hint align="end">{{inputMessage.characterCount}}/140</md-hint>
-            </md-input-container>
-            <button md-icon-button (click)="sendMessage()">
-                <md-icon>send</md-icon>
-            </button>
-        </div>
-    </md-card>
-
+    <div class="app-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </md-sidenav-container>
-
