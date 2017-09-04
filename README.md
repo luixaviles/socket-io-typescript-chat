@@ -1,20 +1,29 @@
-A socket.io Chat Example Using TypeScript
+<p align="center">
+    <a href="https://github.com/luixaviles/socket-io-typescript-chat">
+        <img src="https://img.shields.io/github/stars/luixaviles/socket-io-typescript-chat.svg?style=social&label=Star" alt="GitHub stars">
+    </a>
+    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fluixaviles%2Fsocket-io-typescript-chat&via=luixaviles&text=Take%20a%20look%20this%20%23TypeScript%20chat%20project%20using%20%23Node%20and%20%23Angular%20Material">
+        <img src="https://img.shields.io/twitter/url/https/github.com/luixaviles/socket-io-typescript-chat.svg?style=social" alt="Tweet">
+    </a>
+</p>
+
+A Socket.io Chat Example Using TypeScript
 =========================================
 
 This repository contains server & client side code using `TypeScript` language
 
-## Slides
-Read the slides I presented with this project: [TypeScript on the Web: Real Time Applications with Node.js and Angular 2](https://luixaviles.github.io/socket-io-typescript-chat)
+## Blog Post
+Read the blog post about the release of this project: [Releasing v1.0.0 of a Socket.io-TypeScript Chat Project](https://luixaviles.com/2017/09/releasing-socket-io-typescript-chat-project) 
 
-## Demo Chat application online
-Client application was written using Angular 2 + [Material Components](https://material.angular.io/).
-You can open several browser windows to start the communication between different clients and socket.io server.
-Try the [Live Demo Client](https://goo.gl/BpGvpD)
+## Live Demo
+Try live demo: [https://typescript-chat.firebaseapp.com](https://typescript-chat.firebaseapp.com)
 
 # Support this project
 - Star GitHub repository :star:
 - Create pull requests, submit bugs or suggest new features
 - Follow updates on [Twitter](https://twitter.com/luixaviles)
+
+![](https://luixaviles.com/assets/images/posts/typescript-chat/typescript-chat.gif?raw=true)
 
 # Running Server and Client locally
 ## Prerequisites
@@ -47,7 +56,6 @@ $ npm install
 $ gulp build
 $ npm start
 ```
-
 
 The `socket.io` server will be running on port `8080`
 
