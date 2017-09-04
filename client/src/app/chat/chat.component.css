@@ -1,0 +1,49 @@
+
+[md-fab] {
+    position: absolute;
+    right: 2%;
+    top: 35px;
+    z-index: 1;
+}
+
+.chat-container {
+    position: fixed;
+    width: 100%; 
+    height: 100%;  
+}
+
+.chat-input {
+    padding-top: 20px;
+    width: 80%; 
+}
+
+.chat-list {
+    overflow: auto;
+    position: fixed;
+    top: 90px;
+    left: 25px;
+    right: 25px;
+    bottom: 120px;
+}
+
+.chat-list-item {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    background-color: #E8EAF6;
+}
+
+.main-card {
+    height: 100%;  
+}
+
+.chat-footer-container {
+    position:fixed;
+    bottom:25px;
+    left:25px;
+    right:25px;
+}
+
+.chat-notification {
+    text-align: center;
+}

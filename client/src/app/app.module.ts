@@ -1,10 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
 
+import { MdIconModule,
+         MdInputModule,
+         MdButtonModule,
+         MdSidenavModule,
+         MdToolbarModule,
+         MdListModule,
+        } from '@angular/material';
+
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ChatModule } from './chat/chat.module';
 
 @NgModule({
   declarations: [
@@ -12,9 +20,15 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
-    MaterialModule.forRoot()
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    MdButtonModule,
+    MdIconModule,
+    MdInputModule,
+    MdSidenavModule,
+    MdToolbarModule,
+    MdListModule,
+    ChatModule
   ],
   providers: [],
   bootstrap: [AppComponent]

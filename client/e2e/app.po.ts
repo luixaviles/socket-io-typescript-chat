@@ -1,11 +1,11 @@
-import { browser, element, by } from 'protractor';
+import { browser, by, element } from 'protractor';
 
-export class AngularChatPage {
+export class TypescriptChatClientPage {
   navigateTo() {
     return browser.get('/');
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.css('tcc-root h1')).getText();
   }
 }
