@@ -2,13 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
-import { MdIconModule,
-         MdInputModule,
-         MdButtonModule,
-         MdSidenavModule,
-         MdToolbarModule,
-         MdListModule,
-        } from '@angular/material';
+import { MatIconModule, MatInputModule, MatButtonModule, MatSidenavModule, MatToolbarModule, MatListModule, } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,12 +16,12 @@ import { ChatModule } from './chat/chat.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MdButtonModule,
-    MdIconModule,
-    MdInputModule,
-    MdSidenavModule,
-    MdToolbarModule,
-    MdListModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
     ChatModule
   ],
   providers: [],

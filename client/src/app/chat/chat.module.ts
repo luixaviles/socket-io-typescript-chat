@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-  MdButtonModule,
-  MdCardModule,
-  MdDialog,
-  MdDialogModule,
-  MdIconModule,
-  MdInputModule,
-  MdListModule,
+  MatButtonModule,
+  MatCardModule,
+  MatDialog,
+  MatDialogModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
 } from '@angular/material';
 
 import { ChatComponent } from './chat.component';
@@ -19,16 +19,16 @@ import { DialogUserComponent } from '../dialog-user/dialog-user.component';
   imports: [
     CommonModule,
     FormsModule,
-    MdButtonModule,
-    MdCardModule,
-    MdDialogModule,
-    MdIconModule,
-    MdInputModule,
-    MdListModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
     ReactiveFormsModule
   ],
   declarations: [ChatComponent, DialogUserComponent],
-  providers: [MdDialog, SocketService],
+  providers: [MatDialog, SocketService],
   entryComponents: [DialogUserComponent]
 })
 export class ChatModule { }

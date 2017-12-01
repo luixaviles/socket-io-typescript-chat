@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -11,8 +11,8 @@ export class DialogUserComponent implements OnInit {
   usernameFormControl = new FormControl('', [Validators.required]);
   previousUsername: string;
 
-  constructor(public dialogRef: MdDialogRef<DialogUserComponent>,
-    @Inject(MD_DIALOG_DATA) public params: any) {
+  constructor(public dialogRef: MatDialogRef<DialogUserComponent>,
+    @Inject(MAT_DIALOG_DATA) public params: any) {
     this.previousUsername = params.username ? params.username : undefined;
   }
 
