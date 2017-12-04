@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { Action } from '../shared/action';
 import { Message } from '../shared/message.model';
@@ -22,7 +22,7 @@ export class ChatComponent implements OnInit {
   messages: Message[] = [];
   messageContent: string;
   ioConnection: any;
-  dialogRef: MdDialogRef<DialogUserComponent> | null;
+  dialogRef: MatDialogRef<DialogUserComponent> | null;
   defaultDialogUserParams: any = {
     disableClose: true,
     data: {
@@ -32,7 +32,7 @@ export class ChatComponent implements OnInit {
   };
 
   constructor(private socketService: SocketService,
-    public dialog: MdDialog) { }
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.initModel();
