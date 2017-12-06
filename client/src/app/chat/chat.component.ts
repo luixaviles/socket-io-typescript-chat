@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 
-import { Action } from '../shared/action';
-import { Message } from '../shared/message.model';
-import { User } from '../shared/user.model';
-import { SocketService } from '../shared/socket.service';
-import { DialogUserComponent } from '../dialog-user/dialog-user.component';
-import { DialogUserType } from '../dialog-user/dialog-user-type';
+import { Action } from './shared/model/action';
+import { Message } from './shared/model/message';
+import { User } from './shared/model/user';
+import { SocketService } from './shared/services/socket.service';
+import { DialogUserComponent } from './dialog-user/dialog-user.component';
+import { DialogUserType } from './dialog-user/dialog-user-type';
 
 
 const AVATAR_URL = 'https://api.adorable.io/avatars/285';

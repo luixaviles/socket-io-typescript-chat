@@ -1,4 +1,4 @@
-import {User} from './user.model';
+import {User} from './user';
 import {Action} from './action';
 
 export interface Message {

@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material/material.module';
 
 import { ChatComponent } from './chat.component';
-import { SocketService } from '../shared/socket.service';
-import { DialogUserComponent } from '../dialog-user/dialog-user.component';
+import { SocketService } from './shared/services/socket.service';
+import { DialogUserComponent } from './dialog-user/dialog-user.component';
 
 @NgModule({
   imports: [
