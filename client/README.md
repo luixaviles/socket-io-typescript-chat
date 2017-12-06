@@ -1,6 +1,6 @@
 # TypescriptChatClient
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
+This project uses Angular 5.
 
 ## Development server
 

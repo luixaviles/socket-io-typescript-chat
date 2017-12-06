@@ -26,7 +26,7 @@ export class ChatComponent implements OnInit {
   defaultDialogUserParams: any = {
     disableClose: true,
     data: {
-      title: 'Wellcome',
+      title: 'Welcome',
       dialogType: DialogUserType.NEW
     }
   };

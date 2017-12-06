@@ -1,36 +1,36 @@
-<button md-fab (click)="onClickUserInfo()">
-  <md-icon>person</md-icon>
+<button mat-fab (click)="onClickUserInfo()">
+  <mat-icon>person</mat-icon>
 </button>
 <div class="chat-container">
-  <md-card class="main-card">
-    <md-list class="chat-list">
-      <md-list-item *ngFor="let message of messages" [ngClass]="[(message.action === undefined && message.from.id === user.id)? 'chat-list-item': '']">
-        <img md-list-avatar *ngIf="message.action === undefined" [src]="message.from.avatar">
-        <h4 md-line *ngIf="message.action === undefined">
+  <mat-card class="main-card">
+    <mat-list class="chat-list">
+      <mat-list-item *ngFor="let message of messages" [ngClass]="[(message.action === undefined && message.from.id === user.id)? 'chat-list-item': '']">
+        <img mat-list-avatar *ngIf="message.action === undefined" [src]="message.from.avatar">
+        <h4 mat-line *ngIf="message.action === undefined">
           <b>{{message.from.name}}</b>
         </h4>
-        <p md-line *ngIf="message.action === undefined">
+        <p mat-line *ngIf="message.action === undefined">
           <span> {{message.content}} </span>
         </p>
-        <p md-line *ngIf="message.action === action.JOINED" class="chat-notification">
+        <p mat-line *ngIf="message.action === action.JOINED" class="chat-notification">
           <span> <b>{{message.from.name}}</b> joined to the conversation. </span>
         </p>
-        <p md-line *ngIf="message.action === action.RENAME" class="chat-notification">
+        <p mat-line *ngIf="message.action === action.RENAME" class="chat-notification">
           <span> <b>{{message.content.previousUsername}}</b> is now <b>{{message.content.username}}</b> </span>
         </p>
-      </md-list-item>
-    </md-list>
+      </mat-list-item>
+    </mat-list>
     <div class="chat-footer-container">
-      <md-icon>message</md-icon>
-      <md-input-container class="chat-input">
-        <input mdInput 
+      <mat-icon>message</mat-icon>
+      <mat-form-field class="chat-input">
+        <input matInput 
                #inputMessage 
                maxlength="140" 
                placeholder="Type your message" 
                [(ngModel)]="messageContent" 
                (keyup.enter)="sendMessage(messageContent)">
-        <md-hint align="end">{{inputMessage.value.length}}/140</md-hint>
-      </md-input-container>
+        <mat-hint align="end">{{inputMessage.value.length}}/140</mat-hint>
+      </mat-form-field>
     </div>
-  </md-card>
+  </mat-card>
 </div>

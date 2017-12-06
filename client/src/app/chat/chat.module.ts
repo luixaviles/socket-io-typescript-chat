@@ -7,6 +7,7 @@ import {
   MatDialog,
   MatDialogModule,
   MatIconModule,
+  MatFormFieldModule,
   MatInputModule,
   MatListModule,
 } from '@angular/material';
@@ -23,6 +24,7 @@ import { DialogUserComponent } from '../dialog-user/dialog-user.component';
     MatCardModule,
     MatDialogModule,
     MatIconModule,
+    MatFormFieldModule,
     MatInputModule,
     MatListModule,
     ReactiveFormsModule
