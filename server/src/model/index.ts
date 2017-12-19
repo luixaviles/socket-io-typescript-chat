@@ -1,2 +1,3 @@
-export * from "./message.model"
-export * from "./chat-message.model"
+export { Message } from './message';
+export { ChatMessage } from './chat-message';
+export { User } from './user';

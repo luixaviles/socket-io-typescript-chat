@@ -1,14 +1,14 @@
-import * as express from "express";
-import * as http from "http";
-import * as socketIo from "socket.io";
+import { createServer, Server } from 'http';
+import * as express from 'express';
+import * as socketIo from 'socket.io';
 
-import { Message } from "./model";
+import { Message } from './model';
 
-export class Server {
+export class ChatServer {
     public static readonly PORT:number = 8080;
-    public app: any;
-    private server: any;
-    private io: any;
+    private app: express.Application;
+    private server: Server;
+    private io: SocketIO.Server;
     private port: string | number;
 
     constructor() {
@@ -24,11 +24,11 @@ export class Server {
     }
 
     private createServer(): void {
-        this.server = http.createServer(this.app);
+        this.server = createServer(this.app);
     }
 
     private config(): void {
-        this.port = process.env.PORT || Server.PORT;
+        this.port = process.env.PORT || ChatServer.PORT;
     }
 
     private sockets(): void {
@@ -51,5 +51,9 @@ export class Server {
                 console.log('Client disconnected');
             });
         });
+    }
+
+    public getApp(): express.Application {
+        return this.app;
     }
 }
