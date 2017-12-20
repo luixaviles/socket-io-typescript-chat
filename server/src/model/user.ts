@@ -1,5 +1,3 @@
 export class User {
-    constructor(name: string) {
-
-    }
+    constructor(private name: string) {}
 }
