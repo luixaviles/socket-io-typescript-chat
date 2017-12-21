@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { Action } from './shared/model/action';
+import { Event } from './shared/model/event';
 import { Message } from './shared/model/message';
 import { User } from './shared/model/user';
 import { SocketService } from './shared/services/socket.service';
@@ -58,14 +59,15 @@ export class ChatComponent implements OnInit {
         this.messages.push(message);
       });
 
-    this.socketService.onConnect()
-      .subscribe(() => {
-        console.log('onConnect');
-      });
 
-    this.socketService.onDisconnect()
+    this.socketService.onEvent(Event.CONNECT)
       .subscribe(() => {
-        console.log('onDisconnect');
+        console.log('connected');
+      });
+      
+    this.socketService.onEvent(Event.DISCONNECT)
+      .subscribe(() => {
+        console.log('disconnected');
       });
   }
 

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 import { Message } from '../model/message';
+import { Event } from '../model/event';
 
 import * as socketIo from 'socket.io-client';
 
@@ -18,23 +20,15 @@ export class SocketService {
         this.socket.emit('message', message);
     }
 
-    public onMessage(): Observable<any> {
-        return new Observable(observer => {
-            this.socket.on('message', (data) => {
-                observer.next(data);
-            });
+    public onMessage(): Observable<Message> {
+        return new Observable<Message>(observer => {
+            this.socket.on('message', (data: Message) => observer.next(data));
         });
     }
 
-    public onConnect(): Observable<any> {
-        return new Observable(observer => {
-            this.socket.on('connect', () => observer.next());
-        });
-    }
-
-    public onDisconnect(): Observable<any> {
-        return new Observable(observer => {
-            this.socket.on('disconnect', () => observer.next());
+    public onEvent(event: Event): Observable<any> {
+        return new Observable<Event>(observer => {
+            this.socket.on(event, () => observer.next());
         });
     }
 }
