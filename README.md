@@ -13,7 +13,7 @@ A Socket.io Chat Example Using TypeScript
 This repository contains server & client side code using `TypeScript` language
 
 ## Blog Post
-Read the blog post about the release of this project: [Releasing v1.0.0 of a Socket.io-TypeScript Chat Project](https://luixaviles.com/2017/09/releasing-socket-io-typescript-chat-project) 
+Read the blog post with details about this project: [Real Time Apps with TypeScript: Integrating Web Sockets, Node & Angular](https://medium.com/dailyjs/real-time-apps-with-typescript-integrating-web-sockets-node-angular-e2b57cbd1ec1) 
 
 ## Live Demo
 Try live demo: [https://typescript-chat.firebaseapp.com](https://typescript-chat.firebaseapp.com)
@@ -21,7 +21,7 @@ Try live demo: [https://typescript-chat.firebaseapp.com](https://typescript-chat
 # Support this project
 - Star GitHub repository :star:
 - Create pull requests, submit bugs or suggest new features
-- Follow updates on [Twitter](https://twitter.com/luixaviles)
+- Follow updates on [Twitter](https://twitter.com/luixaviles) or [Github](https://github.com/luixaviles)
 
 ![](https://luixaviles.com/assets/images/posts/typescript-chat/typescript-chat.gif?raw=true)
 
