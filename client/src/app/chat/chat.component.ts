@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { Component, OnInit, ViewChildren, ViewChild, AfterViewInit, QueryList, ElementRef } from '@angular/core';
+import { MatDialog, MatDialogRef, MatList, MatListItem } from '@angular/material';
 
 import { Action } from './shared/model/action';
 import { Event } from './shared/model/event';
@@ -17,7 +17,7 @@ const AVATAR_URL = 'https://api.adorable.io/avatars/285';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, AfterViewInit {
   action = Action;
   user: User;
   messages: Message[] = [];
@@ -32,6 +32,12 @@ export class ChatComponent implements OnInit {
     }
   };
 
+  // getting a reference to the overall list, which is the parent container of the list items
+  @ViewChild(MatList, { read: ElementRef }) matList: ElementRef;
+
+  // getting a reference to the items/messages within the list
+  @ViewChildren(MatListItem, { read: ElementRef }) matListItems: QueryList<MatListItem>;
+
   constructor(private socketService: SocketService,
     public dialog: MatDialog) { }
 
@@ -41,6 +47,22 @@ export class ChatComponent implements OnInit {
     setTimeout(() => {
       this.openUserPopup(this.defaultDialogUserParams);
     }, 0);
+  }
+
+  ngAfterViewInit(): void {
+    // subscribing to any changes in the list of items / messages
+    this.matListItems.changes.subscribe(elements => {
+      this.scrollToBottom();
+    });
+  }
+
+  // auto-scroll fix: inspired by this stack overflow post
+  // https://stackoverflow.com/questions/35232731/angular2-scroll-to-bottom-chat-style
+  private scrollToBottom(): void {
+    try {
+      this.matList.nativeElement.scrollTop = this.matList.nativeElement.scrollHeight;
+    } catch (err) {
+    }
   }
 
   private initModel(): void {
@@ -64,7 +86,7 @@ export class ChatComponent implements OnInit {
       .subscribe(() => {
         console.log('connected');
       });
-      
+
     this.socketService.onEvent(Event.DISCONNECT)
       .subscribe(() => {
         console.log('disconnected');
