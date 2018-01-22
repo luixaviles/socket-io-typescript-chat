@@ -71,6 +71,26 @@ $ ng serve
 
 Now open your browser in following URL: [http://localhost:4200](http://localhost:4200/)
 
+# Forks
+The Open Source community is awesome! If you're working in a fork with other tech stack, please add the reference of your project here:
+
+| Features                                  | Author                        | Status    |
+|-------------------------------------------|-------------------------------|-----------|
+| [React + TypeScript + Material-UI client](https://github.com/nilshartmann/socket-io-typescript-chat/tree/react-client/client-react)   | [nilshartmann](https://github.com/nilshartmann)   | In Progress   |
+
+
+# Contribution
+Contributions are greatly appreciated. You can contribute by adding `i18n` support with your language, the testing section or any other feature.
+
+# Contributors
+[<img alt="luixaviles" src="https://avatars0.githubusercontent.com/u/3485075?v=4&s=117" width="117">](https://github.com/luixaviles) | [<img alt="hughanderson4" src="https://avatars2.githubusercontent.com/u/2387520?v=4&s=117" width="117">](https://github.com/hughanderson4) | [<img alt="ultrarunner" src="https://avatars2.githubusercontent.com/u/1048799?v=4&s=117" width="117">](https://github.com/ultrarunner) | [<img alt="theIDinside" src="https://avatars2.githubusercontent.com/u/25328813?v=4&s=117" width="117">](https://github.com/theIDinside) | [<img alt="carmius" src="https://avatars2.githubusercontent.com/u/16904101?v=4&s=117" width="117">](https://github.com/carmius) | [<img alt="Hellmy" src="https://avatars2.githubusercontent.com/u/2045678?v=4&s=117" width="117">](https://github.com/Hellmy) | 
+:---: |:---: |:---: |:---: |:---: |:---: |
+[luixaviles](https://github.com/luixaviles) |[hughanderson4](https://github.com/hughanderson4) |[ultrarunner](https://github.com/ultrarunner) |[theIDinside](https://github.com/theIDinside) |[carmius](https://github.com/carmius) |[Hellmy](https://github.com/Hellmy) |
+
+[<img alt="you" src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png" width="117">](https://github.com/luixaviles) |
+:---: |
+[You](https://github.com/luixaviles) |
+
 ## License
 
 MIT
