@@ -30,8 +30,8 @@ Try live demo: [https://typescript-chat.firebaseapp.com](https://typescript-chat
 
 First, ensure you have the following installed:
 
-1. NodeJS - Download and Install latest version of Node: [NodeJS](http://http://nodejs.org)
-2. Git - Download and Install [Git](http://git-scm.com)
+1. NodeJS - Download and Install latest version of Node: [NodeJS](https://nodejs.org)
+2. Git - Download and Install [Git](https://git-scm.com)
 3. Angular CLI - Install Command Line Interface for Angular [https://cli.angular.io/](https://cli.angular.io/)
 
 After that, use `Git bash` to run all commands if you are on Windows platform.
