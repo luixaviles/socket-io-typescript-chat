@@ -1,24 +1,34 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { ROUTES } from './app.routes';
+
+import { AuthService } from './auth/auth.service';
+import { CallbackComponent } from './callback/callback.component';
 import { ChatModule } from './chat/chat.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    SharedModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
+    HttpModule,
     ChatModule,
-    SharedModule
+    RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
