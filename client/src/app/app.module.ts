@@ -7,12 +7,15 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
+import { ServiceWorkerModule } from '@angular/service-worker';
+
 import { ROUTES } from './app.routes';
 
 import { AuthService } from './auth/auth.service';
 import { CallbackComponent } from './callback/callback.component';
 import { ChatModule } from './chat/chat.module';
 import { SharedModule } from './shared/shared.module';
+import { environment } from 'environments/environment.prod';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     HttpModule,
     ChatModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {
+      enabled: environment.production
+    }),
     RouterModule.forRoot(ROUTES)
   ],
   providers: [AuthService],

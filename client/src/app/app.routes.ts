@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { CallbackComponent } from './callback/callback.component';
 import { ChatComponent } from './chat/chat.component';
 

@@ -1,6 +1,6 @@
 {
-  "name": "typescript-chat-client",
-  "version": "0.0.0",
+  "name": "alcumus-chat",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "ngsw-config": "node_modules/.bin/ngsw-config dist src/ngsw-config.json",
+    "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js dist/",
+    "build-prod-ngsw": "ng build --prod && npm run ngsw-copy",
+    "serve-prod-ngsw": "npm run build-prod-ngsw && http-server dist -p 8080"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +27,7 @@
     "@angular/platform-browser": "~5.0.0",
     "@angular/platform-browser-dynamic": "~5.0.0",
     "@angular/router": "~5.0.0",
+    "@angular/service-worker": "^6.0.0",
     "auth0-js": "^9.6.1",
     "core-js": "~2.4.1",
     "express": "~4.10.0",
@@ -32,7 +37,7 @@
     "zone.js": "~0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "~1.5.0",
+    "@angular/cli": "^6.0.0",
     "@angular/compiler-cli": "~5.0.0",
     "@angular/language-service": "~5.0.0",
     "@types/express": "~4.0.36",
@@ -52,6 +57,7 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
-    "typescript": "^2.4.2"
+    "typescript": "^2.4.2",
+    "@angular-devkit/build-angular": "~0.6.8"
   }
 }
