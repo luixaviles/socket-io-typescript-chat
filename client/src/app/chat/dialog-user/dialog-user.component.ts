@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tcc-dialog-user',
@@ -12,8 +13,11 @@ export class DialogUserComponent implements OnInit {
   previousUsername: string;
 
   constructor(public dialogRef: MatDialogRef<DialogUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public params: any) {
+    @Inject(MAT_DIALOG_DATA) public params: any,
+    private translate: TranslateService) {
     this.previousUsername = params.username ? params.username : undefined;
+    translate.setDefaultLang('en');
+    translate.use('en');
   }
 
   ngOnInit() {
@@ -26,4 +30,9 @@ export class DialogUserComponent implements OnInit {
       previousUsername: this.previousUsername
     });
   }
+
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+
 }

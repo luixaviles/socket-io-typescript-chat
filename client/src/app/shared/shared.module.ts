@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    TranslateModule,
+    MatMenuModule
   ],
   exports: [ 
-    MaterialModule 
+    MaterialModule,
+    TranslateModule,
+    MatMenuModule
   ],
   declarations: []
 })

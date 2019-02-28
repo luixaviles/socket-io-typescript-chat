@@ -1,11 +1,21 @@
-<h2 mat-dialog-title>{{params.title}}</h2>
+<div class="row">
+<h2 class="dialog-title" mat-dialog-title>{{params.title}}</h2>
 
-<mat-dialog-content>
+<button mat-icon-button mat-dialog-title [matMenuTriggerFor]="menu" class="button-globe">
+  <i class="fa fa-globe-americas"></i>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="switchLanguage('en')">en</button>
+  <button mat-menu-item (click)="switchLanguage('pt')">pt</button>
+</mat-menu>
+</div>
+
+<mat-dialog-content class="dialog-content">
   <mat-form-field>
     <input matInput name="username" placeholder="Username" 
            [(ngModel)]="params.username" (keyup.enter)="onSave()" [formControl]="usernameFormControl" required>
-    <mat-error>This field is required</mat-error>
-    <mat-hint>Please type your username</mat-hint>
+    <mat-error translate>FieldRequired</mat-error>
+    <mat-hint translate>Please type your username</mat-hint>
   </mat-form-field>
 </mat-dialog-content>
 

@@ -12,6 +12,8 @@ import {
   MatSidenavModule, 
   MatToolbarModule, 
 } from '@angular/material';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import {
     MatInputModule, 
     MatListModule,
     MatSidenavModule, 
-    MatToolbarModule, 
+    MatToolbarModule,
+    TranslateModule,
+    MatMenuModule
   ],
   exports: [
     MatButtonModule, 
@@ -35,7 +39,9 @@ import {
     MatInputModule, 
     MatListModule,
     MatSidenavModule, 
-    MatToolbarModule, 
+    MatToolbarModule,
+    TranslateModule,
+    MatMenuModule
   ],
   declarations: [],
   providers: [
