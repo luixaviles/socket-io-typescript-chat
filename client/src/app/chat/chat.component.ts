@@ -8,6 +8,7 @@ import { User } from './shared/model/user';
 import { SocketService } from './shared/services/socket.service';
 import { DialogUserComponent } from './dialog-user/dialog-user.component';
 import { DialogUserType } from './dialog-user/dialog-user-type';
+import { TranslateService } from '@ngx-translate/core';
 
 
 const AVATAR_URL = 'https://api.adorable.io/avatars/285';
@@ -39,7 +40,9 @@ export class ChatComponent implements OnInit, AfterViewInit {
   @ViewChildren(MatListItem, { read: ElementRef }) matListItems: QueryList<MatListItem>;
 
   constructor(private socketService: SocketService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog, private translate: TranslateService) {
+      translate.setDefaultLang('en');
+    }
 
   ngOnInit(): void {
     this.initModel();
@@ -156,4 +159,9 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
     this.socketService.send(message);
   }
+
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+
 }

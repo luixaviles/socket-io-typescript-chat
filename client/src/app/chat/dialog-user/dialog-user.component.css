@@ -1,3 +1,20 @@
 .mat-dialog-content {
     overflow: hidden;
 }
+
+.fa-globe-americas {
+    color: #999;
+}
+
+.button-globe {
+    float:right;
+    margin-top:-5px;
+}
+
+.dialog-title {
+    float:left;
+}
+
+.dialog-content {
+    float: left;
+}
