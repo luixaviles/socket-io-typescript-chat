@@ -17,7 +17,6 @@ export class DialogUserComponent implements OnInit {
     private translate: TranslateService) {
     this.previousUsername = params.username ? params.username : undefined;
     translate.setDefaultLang('en');
-    translate.use('en');
   }
 
   ngOnInit() {
