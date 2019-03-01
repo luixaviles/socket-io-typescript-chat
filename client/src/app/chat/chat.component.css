@@ -47,3 +47,13 @@
 .chat-notification {
     text-align: center;
 }
+
+.fa-globe-americas {
+    color: #999;
+    font-size: 18px;
+}
+
+.button-globe {
+    float: right;
+    margin-top: 18px;
+}

@@ -1,7 +1,12 @@
 {
-    "FieldRequired": "This field is requ",
+    "FieldRequired": "This field is required",
     "Author": "Author",
     "Source Code": "Source Code",
     "Blog Post": "Blog Post",
-    "Please type your username": "Please type your username"
+    "Please type your username": "Please type your username",
+    "Username": "Username",
+    "Dialog Title": "{{title}}",
+    "joined to the conversation.": "joined to the conversation.",
+    "is now": "is now",
+    "Type your message": "Type your message"
 }

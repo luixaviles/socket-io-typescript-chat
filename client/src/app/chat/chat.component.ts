@@ -29,6 +29,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     disableClose: true,
     data: {
       title: 'Welcome',
+      title_pt: 'Bem-vindo',
       dialogType: DialogUserType.NEW
     }
   };
@@ -105,6 +106,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
       data: {
         username: this.user.name,
         title: 'Edit Details',
+        title_pt: 'Alterar',
         dialogType: DialogUserType.EDIT
       }
     });

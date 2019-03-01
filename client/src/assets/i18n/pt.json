@@ -3,5 +3,10 @@
     "Author": "Autor",
     "Source Code": "Código Fonte",
     "Blog Post": "Postagem no Blog",
-    "Please type your username": "Por favor, digite seu nome de usuário"
+    "Please type your username": "Por favor, digite seu nome",
+    "Username": "Nome de Usuário",
+    "Dialog Title": "{{title_pt}}",
+    "joined to the conversation.": "entrou no chat.",
+    "is now": "mudou para",
+    "Type your message": "Digite sua mensagem"
 }
