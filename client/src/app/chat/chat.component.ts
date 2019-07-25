@@ -20,14 +20,16 @@ const AVATAR_URL = 'https://api.adorable.io/avatars/285';
 export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
   private subscriptionOnEventConnected: Subscription;
   private subscriptionOnEventDisconnect: Subscription;
+  private dialogRefSubscription: Subscription;
+
   private ioConnectionSubscription: Subscription;
 
   action = Action;
 
   user: User;
-
   messages: Message[] = [];
   messageContent: string;
+
   dialogRef: MatDialogRef<DialogUserComponent> | null;
 
   defaultDialogUserParams: any = {
@@ -37,7 +39,6 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
       dialogType: DialogUserType.NEW
     }
   };
-
   // getting a reference to the overall list, which is the parent container of the list items
   @ViewChild(MatList, {read: ElementRef}) matList: ElementRef;
   // getting a reference to the items/messages$ within the list
@@ -72,7 +73,8 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
     [
       this.subscriptionOnEventConnected,
       this.subscriptionOnEventDisconnect,
-      this.ioConnectionSubscription
+      this.ioConnectionSubscription,
+      this.dialogRefSubscription
     ]
       .filter(subscription => subscription)
       .forEach(subscription => subscription.unsubscribe())
@@ -127,7 +129,7 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private openUserPopup(params): void {
     this.dialogRef = this.dialog.open(DialogUserComponent, params);
-    this.dialogRef.afterClosed().subscribe(paramsDialog => {
+    this.dialogRefSubscription = this.dialogRef.afterClosed().subscribe(paramsDialog => {
       if (!paramsDialog) {
         return;
       }
