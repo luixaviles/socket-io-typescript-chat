@@ -43,6 +43,11 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
   // getting a reference to the items/messages$ within the list
   @ViewChildren(MatListItem, {read: ElementRef}) matListItems: QueryList<MatListItem>;
 
+
+  private static getRandomId(): number {
+    return Math.floor(Math.random() * (1000000)) + 1;
+  }
+
   constructor(private socketService: SocketService,
               public dialog: MatDialog) {
   }
@@ -55,13 +60,13 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
     }, 0);
   }
 
+
   ngAfterViewInit(): void {
     // subscribing to any changes in the list of items / messages$
     this.matListItems.changes.subscribe(() => {
       this.scrollToBottom();
     });
   }
-
 
   ngOnDestroy(): void {
     [
@@ -72,8 +77,8 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
       .filter(subscription => subscription)
       .forEach(subscription => subscription.unsubscribe())
   }
-
   // auto-scroll fix: inspired by this stack overflow post
+
   // https://stackoverflow.com/questions/35232731/angular2-scroll-to-bottom-chat-style
   private scrollToBottom(): void {
     try {
@@ -83,13 +88,12 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initModel(): void {
-    const randomId = this.getRandomId();
+    const randomId = ChatComponent.getRandomId();
     this.user = {
       id: randomId,
       avatar: `${AVATAR_URL}/${randomId}.png`
     };
   }
-
   private initIoConnection(): void {
     this.socketService.initSocket();
 
@@ -109,10 +113,6 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe(() => {
         console.log('disconnected');
       });
-  }
-
-  getRandomId(): number {
-    return Math.floor(Math.random() * (1000000)) + 1;
   }
 
   public onClickUserInfo() {
