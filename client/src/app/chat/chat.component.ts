@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChildren, ViewChild, AfterViewInit, QueryList, ElementRef } from '@angular/core';
-import { MatDialog, MatDialogRef, MatList, MatListItem } from '@angular/material';
+import {Component, OnInit, ViewChildren, ViewChild, AfterViewInit, QueryList, ElementRef, OnDestroy} from '@angular/core';
+import {MatDialog, MatDialogRef, MatList, MatListItem} from '@angular/material';
 
-import { Action } from './shared/model/action';
-import { Event } from './shared/model/event';
-import { Message } from './shared/model/message';
-import { User } from './shared/model/user';
-import { SocketService } from './shared/services/socket.service';
-import { DialogUserComponent } from './dialog-user/dialog-user.component';
-import { DialogUserType } from './dialog-user/dialog-user-type';
-
+import {Action} from './shared/model/action';
+import {Event} from './shared/model/event';
+import {Message} from './shared/model/message';
+import {User} from './shared/model/user';
+import {SocketService} from './shared/services/socket.service';
+import {DialogUserComponent} from './dialog-user/dialog-user.component';
+import {DialogUserType} from './dialog-user/dialog-user-type';
+import {Subscription} from 'rxjs/Subscription';
 
 const AVATAR_URL = 'https://api.adorable.io/avatars/285';
 
@@ -17,13 +17,19 @@ const AVATAR_URL = 'https://api.adorable.io/avatars/285';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit, AfterViewInit {
+export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
+  private subscriptionOnEventConnected: Subscription;
+  private subscriptionOnEventDisconnect: Subscription;
+  private ioConnectionSubscription: Subscription;
+
   action = Action;
+
   user: User;
+
   messages: Message[] = [];
   messageContent: string;
-  ioConnection: any;
   dialogRef: MatDialogRef<DialogUserComponent> | null;
+
   defaultDialogUserParams: any = {
     disableClose: true,
     data: {
@@ -33,13 +39,13 @@ export class ChatComponent implements OnInit, AfterViewInit {
   };
 
   // getting a reference to the overall list, which is the parent container of the list items
-  @ViewChild(MatList, { read: ElementRef }) matList: ElementRef;
-
-  // getting a reference to the items/messages within the list
-  @ViewChildren(MatListItem, { read: ElementRef }) matListItems: QueryList<MatListItem>;
+  @ViewChild(MatList, {read: ElementRef}) matList: ElementRef;
+  // getting a reference to the items/messages$ within the list
+  @ViewChildren(MatListItem, {read: ElementRef}) matListItems: QueryList<MatListItem>;
 
   constructor(private socketService: SocketService,
-    public dialog: MatDialog) { }
+              public dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
     this.initModel();
@@ -50,10 +56,21 @@ export class ChatComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // subscribing to any changes in the list of items / messages
-    this.matListItems.changes.subscribe(elements => {
+    // subscribing to any changes in the list of items / messages$
+    this.matListItems.changes.subscribe(() => {
       this.scrollToBottom();
     });
+  }
+
+
+  ngOnDestroy(): void {
+    [
+      this.subscriptionOnEventConnected,
+      this.subscriptionOnEventDisconnect,
+      this.ioConnectionSubscription
+    ]
+      .filter(subscription => subscription)
+      .forEach(subscription => subscription.unsubscribe())
   }
 
   // auto-scroll fix: inspired by this stack overflow post
@@ -76,24 +93,25 @@ export class ChatComponent implements OnInit, AfterViewInit {
   private initIoConnection(): void {
     this.socketService.initSocket();
 
-    this.ioConnection = this.socketService.onMessage()
+    this.ioConnectionSubscription = this.socketService.onMessage()
       .subscribe((message: Message) => {
         this.messages.push(message);
       });
 
 
-    this.socketService.onEvent(Event.CONNECT)
+    this.subscriptionOnEventConnected = this.socketService
+      .onEvent(Event.CONNECT)
       .subscribe(() => {
         console.log('connected');
       });
 
-    this.socketService.onEvent(Event.DISCONNECT)
+    this.subscriptionOnEventDisconnect = this.socketService.onEvent(Event.DISCONNECT)
       .subscribe(() => {
         console.log('disconnected');
       });
   }
 
-  private getRandomId(): number {
+  getRandomId(): number {
     return Math.floor(Math.random() * (1000000)) + 1;
   }
 
