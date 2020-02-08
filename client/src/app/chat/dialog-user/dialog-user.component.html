@@ -13,7 +13,7 @@
 <mat-dialog-content class="dialog-content">
   <mat-form-field>
     <input matInput name="username" placeholder="{{'Username' | translate}}"
-           [(ngModel)]="params.username" (keyup.enter)="onSave()" [formControl]="usernameFormControl" required>
+          (keyup.enter)="onSave()" [formControl]="usernameFormControl" required>
     <mat-error translate>FieldRequired</mat-error>
     <mat-hint translate>Please type your username</mat-hint>
   </mat-form-field>
