@@ -16,6 +16,7 @@ export class DialogUserComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public params: any,
               private translate: TranslateService) {
     this.previousUsername = params.username ? params.username : undefined;
+    this.usernameFormControl.setValue(params.username);
     translate.setDefaultLang('en');
   }
 
@@ -24,7 +25,7 @@ export class DialogUserComponent implements OnInit {
 
   public onSave(): void {
     this.dialogRef.close({
-      username: this.params.username,
+      username: this.usernameFormControl.value,
       dialogType: this.params.dialogType,
       previousUsername: this.previousUsername
     });
