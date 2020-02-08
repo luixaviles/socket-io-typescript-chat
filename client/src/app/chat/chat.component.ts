@@ -14,7 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
 const AVATAR_URL = 'https://api.adorable.io/avatars/285';
 
 @Component({
-  selector: 'tcc-chat',
+  selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
@@ -41,7 +41,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
   @ViewChildren(MatListItem, { read: ElementRef }) matListItems: QueryList<MatListItem>;
 
   constructor(private socketService: SocketService,
-    public dialog: MatDialog, private translate: TranslateService) {
+              public dialog: MatDialog, private translate: TranslateService) {
       translate.setDefaultLang('en');
     }
 
@@ -147,11 +147,11 @@ export class ChatComponent implements OnInit, AfterViewInit {
     if (action === Action.JOINED) {
       message = {
         from: this.user,
-        action: action
-      }
+        action
+      };
     } else if (action === Action.RENAME) {
       message = {
-        action: action,
+        action,
         content: {
           username: this.user.name,
           previousUsername: params.previousUsername
