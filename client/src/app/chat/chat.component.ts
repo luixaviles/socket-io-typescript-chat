@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChildren, ViewChild, AfterViewInit, QueryList, ElementRef } from '@angular/core';
-import { MatDialog, MatDialogRef, MatList, MatListItem } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatList, MatListItem } from '@angular/material/list';
 
 import { Action } from './shared/model/action';
 import { Event } from './shared/model/event';
