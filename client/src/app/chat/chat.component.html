@@ -23,17 +23,17 @@
     <div class="chat-footer-container">
       <mat-icon>message</mat-icon>
       <mat-form-field class="chat-input">
-        <input matInput 
-               #inputMessage 
-               maxlength="140" 
-               placeholder="{{'Type your message' | translate}}" 
-               [(ngModel)]="messageContent" 
+        <input matInput
+               #inputMessage
+               maxlength="140"
+               placeholder="{{'Type your message' | translate}}"
+               [(ngModel)]="messageContent"
                (keyup.enter)="sendMessage(messageContent)">
         <mat-hint align="end">{{inputMessage.value.length}}/140</mat-hint>
       </mat-form-field>
     </div>
     <button mat-icon-button [matMenuTriggerFor]="menu" class="button-globe">
-      <i class="fa fa-globe-americas"></i>
+      <mat-icon>language</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="switchLanguage('en')"><img alt="flag" src="../../../assets/flags/en.png"> English</button>
