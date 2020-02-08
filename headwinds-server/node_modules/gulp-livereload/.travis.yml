@@ -1,0 +1,6 @@
+language: node_js
+node_js:
+  # Support policy: Maintained Node versions.
+  - '6'
+  - '8'
+  - '10'
