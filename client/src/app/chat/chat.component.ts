@@ -35,7 +35,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
   };
 
   // getting a reference to the overall list, which is the parent container of the list items
-  @ViewChild(MatList, { read: ElementRef }) matList: ElementRef;
+  @ViewChild(MatList, { read: ElementRef, static: true }) matList: ElementRef;
 
   // getting a reference to the items/messages within the list
   @ViewChildren(MatListItem, { read: ElementRef }) matListItems: QueryList<MatListItem>;
