@@ -71,6 +71,12 @@ $ ng serve
 
 Now open your browser in following URL: [http://localhost:4200](http://localhost:4200/)
 
+# Server Deployment
+
+Take a look the [Wiki Page](https://github.com/luixaviles/socket-io-typescript-chat/wiki) for more details about deploying on `Heroku` and `Zeit.co`.
+
+Feel free to update that page and Readme if you add any other platform for deployment!
+
 # Forks
 The Open Source community is awesome! If you're working in a fork with other tech stack, please add the reference of your project here:
 
