@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { 
-  MatButtonModule, 
+import {
+  MatButtonModule,
   MatCardModule,
   MatDialog,
   MatDialogModule,
-  MatIconModule, 
+  MatIconModule,
   MatFormFieldModule,
-  MatInputModule, 
+  MatInputModule,
   MatListModule,
-  MatSidenavModule, 
-  MatToolbarModule, 
+  MatSidenavModule,
+  MatToolbarModule,
 } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatMenuModule } from '@angular/material/menu';
@@ -18,27 +18,27 @@ import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
   imports: [
     CommonModule,
-    MatButtonModule, 
+    MatButtonModule,
     MatCardModule,
     MatDialogModule,
-    MatIconModule, 
+    MatIconModule,
     MatFormFieldModule,
-    MatInputModule, 
+    MatInputModule,
     MatListModule,
-    MatSidenavModule, 
+    MatSidenavModule,
     MatToolbarModule,
     TranslateModule,
     MatMenuModule
   ],
   exports: [
-    MatButtonModule, 
+    MatButtonModule,
     MatCardModule,
     MatDialogModule,
-    MatIconModule, 
+    MatIconModule,
     MatFormFieldModule,
-    MatInputModule, 
+    MatInputModule,
     MatListModule,
-    MatSidenavModule, 
+    MatSidenavModule,
     MatToolbarModule,
     TranslateModule,
     MatMenuModule

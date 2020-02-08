@@ -2,7 +2,7 @@
 <h2 class="dialog-title" mat-dialog-title>{{ 'Dialog Title' | translate:params }}</h2>
 
 <button mat-icon-button mat-dialog-title [matMenuTriggerFor]="menu" class="button-globe" tabindex="-1">
-  <i class="fa fa-globe-americas"></i>
+  <mat-icon>language</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="switchLanguage('en')"><img alt="flag" src="../../../assets/flags/en.png"> English</button>
@@ -12,7 +12,7 @@
 
 <mat-dialog-content class="dialog-content">
   <mat-form-field>
-    <input matInput name="username" placeholder="{{'Username' | translate}}" 
+    <input matInput name="username" placeholder="{{'Username' | translate}}"
            [(ngModel)]="params.username" (keyup.enter)="onSave()" [formControl]="usernameFormControl" required>
     <mat-error translate>FieldRequired</mat-error>
     <mat-hint translate>Please type your username</mat-hint>
