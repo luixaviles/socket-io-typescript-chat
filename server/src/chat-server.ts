@@ -1,5 +1,5 @@
-import express from "express";
-import socketIo from 'socket.io';
+import * as express from 'express';	
+import * as socketIo from 'socket.io';
 import * as http from "http";
 import { Message } from "./model";
 
