@@ -19,3 +19,6 @@
 # e2e
 /client/e2e/*.js
 /client/e2e/*.map
+
+#vs code
+.vscode
