@@ -16,12 +16,12 @@ gulp.task('default', gulp.series('build'))
 
 
 gulp.task('serve', function() {
-  //gulp.watch('./**/*.ts', ['typescript']);
+  gulp.watch('./**/*.ts');
 
   livereload.listen();
   // make sure you have installed ts-node via npm i ts-node
   nodemon({
-    exec: 'ts-node ./server/server.ts',
+    exec: 'ts-node ./index.ts',
     ext: 'ts'
   }).on('restart', function() {
     setTimeout(function() {
