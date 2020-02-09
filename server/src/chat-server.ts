@@ -3,7 +3,7 @@ import * as http from "http";
 import { Message } from "./model";
 
 export class ChatServer {
-  public static readonly PORT: number = 8080;
+  public static readonly PORT:number = 8080;
   private app: express.Application;
   private server: http.Server;
   private io: SocketIO.Server;
