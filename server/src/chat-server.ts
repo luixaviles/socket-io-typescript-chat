@@ -1,4 +1,5 @@
 import express from "express";
+import socketIo from 'socket.io';
 import * as http from "http";
 import { Message } from "./model";
 
@@ -30,7 +31,7 @@ export class ChatServer {
   }
 
   private sockets(): void {
-    this.io = require("socket.io").listen(this.server);
+    this.io = socketIo(this.server);
   }
 
   private listen(): void {
