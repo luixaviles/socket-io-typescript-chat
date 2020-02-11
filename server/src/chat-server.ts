@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import * as http from "http";
 import { Message } from "./model";
 
@@ -19,6 +20,7 @@ export class ChatServer {
 
   private createApp(): void {
     this.app = express();
+    this.app.use(cors());
   }
 
   private createServer(): void {
