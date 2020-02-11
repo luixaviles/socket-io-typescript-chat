@@ -32,7 +32,7 @@ export class ChatServer {
   }
 
   private sockets(): void {
-    this.io = require("socket.io").listen(this.server);
+    this.io = require("socket.io").listen(this.server, { origins: '*:*'});
   }
 
   private listen(): void {
