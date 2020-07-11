@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { StoreUserService } from '../shared/services/store-user.service';
 
 @Component({
   selector: 'app-dialog-user',
@@ -13,10 +14,11 @@ export class DialogUserComponent implements OnInit {
   previousUsername: string;
 
   constructor(public dialogRef: MatDialogRef<DialogUserComponent>,
-              @Inject(MAT_DIALOG_DATA) public params: any,
-              private translate: TranslateService) {
-    this.previousUsername = params.username ? params.username : undefined;
-    this.usernameFormControl.setValue(params.username);
+    @Inject(MAT_DIALOG_DATA) public params: any,
+    private translate: TranslateService,
+    private storedUser: StoreUserService) {
+    this.previousUsername = storedUser.getStoredUser() ? storedUser.getStoredUser() : (params.username ? params.username : undefined);
+    this.usernameFormControl.setValue(storedUser.getStoredUser() ? storedUser.getStoredUser() : (params.username ? params.username : ""));
     translate.setDefaultLang('en');
   }
 

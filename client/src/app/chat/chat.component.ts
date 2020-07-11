@@ -10,6 +10,7 @@ import { SocketService } from './shared/services/socket.service';
 import { DialogUserComponent } from './dialog-user/dialog-user.component';
 import { DialogUserType } from './dialog-user/dialog-user-type';
 import { TranslateService } from '@ngx-translate/core';
+import { StoreUserService } from './shared/services/store-user.service';
 
 
 const AVATAR_URL = 'https://api.adorable.io/avatars/285';
@@ -25,6 +26,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
   messages: Message[] = [];
   messageContent: string;
   ioConnection: any;
+  storedUserName: string;
   dialogRef: MatDialogRef<DialogUserComponent> | null;
   defaultDialogUserParams: any = {
     disableClose: true,
@@ -42,9 +44,10 @@ export class ChatComponent implements OnInit, AfterViewInit {
   @ViewChildren(MatListItem, { read: ElementRef }) matListItems: QueryList<MatListItem>;
 
   constructor(private socketService: SocketService,
-              public dialog: MatDialog, private translate: TranslateService) {
-      translate.setDefaultLang('en');
-    }
+    private storedUser: StoreUserService,
+    public dialog: MatDialog, private translate: TranslateService) {
+    translate.setDefaultLang('en');
+  }
 
   ngOnInit(): void {
     this.initModel();
@@ -119,12 +122,16 @@ export class ChatComponent implements OnInit, AfterViewInit {
       if (!paramsDialog) {
         return;
       }
+      this.storedUserName = this.storedUser.getStoredUser();
 
       this.user.name = paramsDialog.username;
+
       if (paramsDialog.dialogType === DialogUserType.NEW) {
+        this.storedUser.storeUser(this.user.name);
         this.initIoConnection();
         this.sendNotification(paramsDialog, Action.JOINED);
       } else if (paramsDialog.dialogType === DialogUserType.EDIT) {
+        this.storedUser.storeUser(this.user.name);
         this.sendNotification(paramsDialog, Action.RENAME);
       }
     });
