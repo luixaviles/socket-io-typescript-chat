@@ -20,7 +20,7 @@
     "@types/node": "^13.7.0",
     "@types/socket.io": "^2.1.4",
     "cors": "^2.8.5",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "gulp": "4.0.2",
     "gulp-livereload": "4.0.2",
     "gulp-nodemon": "^2.4.2",
