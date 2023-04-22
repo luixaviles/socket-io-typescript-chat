@@ -52,3 +52,25 @@
     float: right;
     margin-top: 18px;
 }
+
+.mat-cursor{
+cursor: pointer;
+}
+.list-horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+.chat-reply {
+  padding-top: 20px;
+  width: 80%;
+  background-color: cornflowerblue;
+}
+.chat-reply-content{
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:". .";
+}
+

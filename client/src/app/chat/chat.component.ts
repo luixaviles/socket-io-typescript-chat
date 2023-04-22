@@ -1,19 +1,19 @@
-import { Component, OnInit, ViewChildren, ViewChild, AfterViewInit, QueryList, ElementRef } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MatList, MatListItem } from '@angular/material/list';
+import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatList, MatListItem} from '@angular/material/list';
 
-import { Action } from './shared/model/action';
-import { Event } from './shared/model/event';
-import { Message } from './shared/model/message';
-import { User } from './shared/model/user';
-import { SocketService } from './shared/services/socket.service';
-import { DialogUserComponent } from './dialog-user/dialog-user.component';
-import { DialogUserType } from './dialog-user/dialog-user-type';
-import { TranslateService } from '@ngx-translate/core';
-import { StoreUserService } from './shared/services/store-user.service';
+import {Action} from './shared/model/action';
+import {Event} from './shared/model/event';
+import {Message} from './shared/model/message';
+import {User} from './shared/model/user';
+import {SocketService} from './shared/services/socket.service';
+import {DialogUserComponent} from './dialog-user/dialog-user.component';
+import {DialogUserType} from './dialog-user/dialog-user-type';
+import {TranslateService} from '@ngx-translate/core';
+import {StoreUserService} from './shared/services/store-user.service';
 
 
-const AVATAR_URL = 'https://api.adorable.io/avatars/285';
+const AVATAR_URL = 'https://ui-avatars.com/api/?name=';
 
 @Component({
   selector: 'app-chat',
@@ -23,6 +23,9 @@ const AVATAR_URL = 'https://api.adorable.io/avatars/285';
 export class ChatComponent implements OnInit, AfterViewInit {
   action = Action;
   user: User;
+  alterId: number;
+  replyId: number;
+  replyContent: string;
   messages: Message[] = [];
   messageContent: string;
   ioConnection: any;
@@ -38,15 +41,17 @@ export class ChatComponent implements OnInit, AfterViewInit {
   };
 
   // getting a reference to the overall list, which is the parent container of the list items
-  @ViewChild(MatList, { read: ElementRef, static: true }) matList: ElementRef;
+  @ViewChild(MatList, {read: ElementRef, static: true}) matList: ElementRef;
 
   // getting a reference to the items/messages within the list
-  @ViewChildren(MatListItem, { read: ElementRef }) matListItems: QueryList<MatListItem>;
+  @ViewChildren(MatListItem, {read: ElementRef}) matListItems: QueryList<MatListItem>;
 
   constructor(private socketService: SocketService,
-    private storedUser: StoreUserService,
-    public dialog: MatDialog, private translate: TranslateService) {
+              private storedUser: StoreUserService,
+              public dialog: MatDialog, private translate: TranslateService) {
     translate.setDefaultLang('en');
+    this.alterId = 0;
+    this.replyId = 0;
   }
 
   ngOnInit(): void {
@@ -75,9 +80,10 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   private initModel(): void {
     const randomId = this.getRandomId();
+
     this.user = {
       id: randomId,
-      avatar: `${AVATAR_URL}/${randomId}.png`
+      avatar: AVATAR_URL + randomId
     };
   }
 
@@ -86,7 +92,20 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
     this.ioConnection = this.socketService.onMessage()
       .subscribe((message: Message) => {
-        this.messages.push(message);
+        if (message?.action === Action.DELETE) {
+          const index = this.messages.findIndex(item => item.id === message.alterId);
+          this.messages.splice(index, 1);
+        } else if (message?.action === Action.EDIT) {
+          // tslint:disable-next-line:prefer-for-of
+          for (let i = 0; i < this.messages.length; i++) {
+            if (this.messages[i].id === message.alterId) {
+              this.messages[i].content = message.alterContent;
+            }
+          }
+        } else {
+          this.messages.push(message);
+        }
+
       });
 
 
@@ -141,11 +160,31 @@ export class ChatComponent implements OnInit, AfterViewInit {
     if (!message) {
       return;
     }
-
-    this.socketService.send({
-      from: this.user,
-      content: message
-    });
+    if (this.alterId) {
+      this.socketService.send({
+        id: this.user.id + Date.now(),
+        from: this.user,
+        action: Action.EDIT,
+        alterId: this.alterId,
+        alterContent: message
+      });
+      this.alterId = 0;
+    } else if (this.replyId) {
+      this.socketService.send({
+        id: +(this.user.id.toString() + Date.now().toString()),
+        from: this.user,
+        alterId: this.replyId,
+        content: message,
+        reply: true
+      });
+      this.replyId = 0;
+    } else {
+      this.socketService.send({
+        id: +(this.user.id.toString() + Date.now().toString()),
+        from: this.user,
+        content: message,
+      });
+    }
     this.messageContent = null;
   }
 
@@ -174,4 +213,35 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.translate.use(language);
   }
 
+
+  onEdit(index: number, id: number) {
+    this.messageContent = this.messages[index].content;
+    this.alterId = id;
+  }
+
+  onDelete(id: number) {
+
+    const message: Message = {
+      from: this.user,
+      action: Action.DELETE,
+      alterId: id
+    };
+    this.socketService.send(message);
+  }
+
+  onReply(id: number, content: string) {
+    this.replyId = id;
+    this.replyContent = content;
+  }
+
+  getReplyMessage(id: number): string {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.messages.length; i++) {
+      if (this.messages[i].id === id) {
+        return this.messages[i].content;
+      }
+
+    }
+    return '';
+  }
 }
