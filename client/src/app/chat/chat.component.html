@@ -4,23 +4,64 @@
 <div class="chat-container">
   <mat-card class="main-card">
     <mat-list class="chat-list">
-      <mat-list-item *ngFor="let message of messages" [ngClass]="[(message.action === undefined && message.from.id === user.id)? 'chat-list-item': '']">
+      <mat-list-item *ngFor="let message of messages;let i=index  "
+                     [ngClass]="[(message.action === undefined && message.from.id === user.id)? 'chat-list-item': '']">
         <img mat-list-avatar *ngIf="message.action === undefined" [src]="message.from.avatar">
         <h4 mat-line *ngIf="message.action === undefined">
           <b>{{message.from.name}}</b>
         </h4>
+        <p mat-line *ngIf="message.reply !== undefined">
+          <b> <i>{{this.getReplyMessage(message.alterId)}}</i> </b>
+          <br>
+        </p>
         <p mat-line *ngIf="message.action === undefined">
           <span> {{message.content}} </span>
         </p>
+
+        <mat-action-list class="list-horizontal">
+
+
+          <mat-icon *ngIf="message.action === undefined && message.from.id === user.id" mat-list-item class="mat-cursor"
+                    (click)="this.onEdit(i,message.id)"
+          >edit
+          </mat-icon>
+
+          <mat-icon mat-list-item *ngIf="message.action === undefined && message.from.id === user.id" class="mat-cursor"
+                    (click)="this.onDelete(message.id)"
+          >delete
+          </mat-icon>
+
+          <mat-icon mat-list-item *ngIf="message.action === undefined && message.from.id !== user.id" class="mat-cursor"
+                    (click)="this.onReply(message.id, message.content)"
+          >reply
+          </mat-icon>
+
+        </mat-action-list>
+
+
         <p mat-line *ngIf="message.action === action.JOINED" class="chat-notification">
           <span translate> <b>{{message.from.name}}</b> joined to the conversation. </span>
         </p>
         <p mat-line *ngIf="message.action === action.RENAME" class="chat-notification">
-          <span translate> <b>{{message.content.previousUsername}}</b> is now <b>{{message.content.username}}</b> </span>
+          <span
+            translate> <b>{{message.content.previousUsername}}</b> is now <b>{{message.content.username}}</b> </span>
         </p>
+
       </mat-list-item>
     </mat-list>
+
+
+
     <div class="chat-footer-container">
+      <mat-card *ngIf="replyId" class="chat-reply">
+        <mat-card-content  class="chat-reply-content">
+         <p> {{this.replyContent}}</p>
+          <mat-icon  class="mat-cursor"
+                    (click)="this.replyId=0"
+          >close
+          </mat-icon>
+        </mat-card-content>
+      </mat-card>
       <mat-icon>message</mat-icon>
       <mat-form-field class="chat-input">
         <input matInput
@@ -36,8 +77,10 @@
       <mat-icon>language</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="switchLanguage('en')"><img alt="flag" src="../../../assets/flags/en.png"> English</button>
-      <button mat-menu-item (click)="switchLanguage('pt')"><img alt="flag" src="../../../assets/flags/pt.png"> Português</button>
+      <button mat-menu-item (click)="switchLanguage('en')"><img alt="flag" src="../../../assets/flags/en.png"> English
+      </button>
+      <button mat-menu-item (click)="switchLanguage('pt')"><img alt="flag" src="../../../assets/flags/pt.png"> Português
+      </button>
     </mat-menu>
   </mat-card>
 </div>
